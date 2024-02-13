@@ -2,7 +2,7 @@
 
 ## Overview of Paper
 
-[Whatever it will be]
+[Whatever it will be testing for connections]
 
 ## File Structure
 
