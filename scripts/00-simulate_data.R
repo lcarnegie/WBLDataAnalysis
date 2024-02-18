@@ -20,11 +20,11 @@ set.seed(123)  # Setting seed for reproducibility
 report_years <- 2010:2020
 
 # Generating random scores for the specified columns 
-#Can only be 0, 25, 50, 75, 100 due to nature of survey
+# Note: Can only be 0, 25, 50, 75, 100 due to nature of survey
 scores <- sample(c(0, 25, 50, 75, 100), length(report_years), replace = TRUE)
 
 # Creating the data frame
-simulated_data <- data.frame(
+simulated_data <- tibble(
   Economy = rep("Canada", length(report_years)),
   Region = rep("High income: OECD", length(report_years)),
   Report_Year = report_years,
@@ -40,17 +40,18 @@ simulated_data <- data.frame(
 )
 
 # Testing simulated data
-#simulated_data$Report_Year |> min() == 2010
-#simulated_data$Report_Year |> max() == 2020
-#simulated_data$WBL_Index |> min() == 0
 
-#simulated_data$Mobility %in% c(0, 25, 50, 75, 100)
-#simulated_data$Workplace %in% c(0, 25, 50, 75, 100)
-#simulated_data$Pay %in% c(0, 25, 50, 75, 100)
-#simulated_data$Marriage %in% c(0, 25, 50, 75, 100)
-#simulated_data$Parenthood %in% c(0, 25, 50, 75, 100)
-#simulated_data$Entrepreneurship %in% c(0, 25, 50, 75, 100)
-#simulated_data$Assets %in% c(0, 25, 50, 75, 100)
-#simulated_data$Pension %in% c(0, 25, 50, 75, 100)
+simulated_data$Report_Year |> min() == 2010
+simulated_data$Report_Year |> max() == 2020
+simulated_data$WBL_Index |> min() == 0
+
+simulated_data$Mobility %in% c(0, 25, 50, 75, 100)
+simulated_data$Workplace %in% c(0, 25, 50, 75, 100)
+simulated_data$Pay %in% c(0, 25, 50, 75, 100)
+simulated_data$Marriage %in% c(0, 25, 50, 75, 100)
+simulated_data$Parenthood %in% c(0, 25, 50, 75, 100)
+simulated_data$Entrepreneurship %in% c(0, 25, 50, 75, 100)
+simulated_data$Assets %in% c(0, 25, 50, 75, 100)
+simulated_data$Pension %in% c(0, 25, 50, 75, 100)
 
 

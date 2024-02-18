@@ -19,152 +19,34 @@ bibliography: references.bib
 #| message: false
 
 library(tidyverse)
-library(palmerpenguins)
 ```
 
 
 # Introduction
 
-SEE Discussion for paper idea. Basically there is world bank data about women and the labour market with data from 180+ countries that give a overview of the progression of women's outcomes in the labour market. However, when you compaire it with local Canadian data in the example of canada, the statistics don't really match up, therefore the data has a lot of probelms with collection. And we'd expand on that in our replication but the replication is not done (yet).
-
-
 
 # Data {#sec-data}
 
-Some of our data is of penguins (@fig-bills), from @palmerpenguins.
 
-
-Talk more about it.
-
-And also planes (@fig-planes). (You can change the height and width, but don't worry about doing that until you have finished every other aspect of the paper - Quarto will try to make it look nice and the defaults usually work well once you have enough text.)
-
-
-
-Talk way more about it. 
-
-
-
-# Model
-
-The goal of our modelling strategy is twofold. Firstly,...
-
-Here we briefly describe the Bayesian analysis model used to investigate... Background details and diagnostics are included in [Appendix -@sec-model-details].
-
-## Model set-up
-
-Define $y_i$ as the number of seconds that the plane remained aloft. Then $\beta_i$ is the wing width and $\gamma_i$ is the wing length, both measured in millimeters.  
-
-\begin{align} 
-y_i|\mu_i, \sigma &\sim \mbox{Normal}(\mu_i, \sigma) \\
-\mu_i &= \alpha + \beta_i + \gamma_i\\
-\alpha &\sim \mbox{Normal}(0, 2.5) \\
-\beta &\sim \mbox{Normal}(0, 2.5) \\
-\gamma &\sim \mbox{Normal}(0, 2.5) \\
-\sigma &\sim \mbox{Exponential}(1)
-\end{align}
-
-We run the model in R [@citeR] using the `rstanarm` package of @rstanarm. We use the default priors from `rstanarm`.
-
-
-### Model justification
-
-We expect a positive relationship between the size of the wings and time spent aloft. In particular...
-
-We can use maths by including latex between dollar signs, for instance $\theta$.
-
-
-# Results
-
-Our results are summarized in @tbl-modelresults.
-
-
-
-
+# Results {#sec-results}
 
 
 # Discussion
 
-## First discussion point {#sec-first-point}
+## First discussion point {#sec-point1}
 
-Can a woman choose where to live in the same way as a man?
+## Second discussion point {#sec-point2}
 
-Can a woman travel outside her home in the same way as a man?
-
-Yes, they can but is a surface level question, because women do not travel the same way. Possible discussion of how transit designs are gender neutral, why designing for trip chaining is important. 
-
----
-
-[](https://static1.squarespace.com/static/57b25a1d579fb3a225546f2e/t/61f60fc732982f3789c5741d/1643521217247/finalreport.pdf)
-
----
-
-Can a woman apply for a passport in the same way as a man?
-
----
-
-Can a woman travel outside the country in the same way as a man?
-
----
-
-**Workplace 100 (2010-2023)**
-
-Can a woman get a job in the same way as a man?
-
-[The gender wage gap in Canada: 1998 to 2018](https://www150.statcan.gc.ca/n1/pub/75-004-m/75-004-m2019004-eng.htm)
-
-https://canadianwomen.org/blog/the-gender-pay-gap-is-a-myth/
-
-Does the law prohibit discrimination in employment based on gender?
-
-• In 2018, female employees aged 25 to 54 earned $4.13 (or 13.3%) less per hour, on average, than their male counterparts. In other words, these women earned $0.87 for every dollar earned by men.
-
-- The two largest factors explaining the remaining gender wage gap in 2018 were the distribution of women and men across industries, and women’s overrepresentation in part-time work. These were also the largest explanatory factors behind the gap in 1998.
-- Similar to other studies, nearly two-thirds of the gap in 2018 was unexplained. Possible explanations for this portion include gender differences in characteristics that were beyond the scope of this study, such as work experience, as well as unobservable factors, such as any gender-related biases.
-- **Note: The difference between men’s and women’s average wages was found to be statistically significant at a 95% confidence level.**
-
-**Is there legislation on sexual harassment in employment?**
-
-he infographic "[Sexual misconduct and gender-based discrimination at work, 2020](https://www150.statcan.gc.ca/en/catalogue/11-627-M2021061)", released in 2021, indicated that 25% of women and 17% of men experienced sexual misconduct in their workplace in the previous year. Statistics Canada also reported that women were twice as likely as men to experience unwanted sexual behaviours in the workplace.
-
-The largest proportion of women reported ever experiencing inappropriate sexualized behaviours in a workplace setting (44%), followed by discriminatory behaviours (20%) and sexual assault (13%).
-
-Statistics Canada's [Centre for Gender, Diversity and Inclusion Statistics](https://www.statcan.gc.ca/en/topics-start/gender_diversity_and_inclusion), in collaboration with the Canadian Centre for Justice and Community Safety Statistics, has released a new data table on experiences of harassment and sexual assault in the workplace. This data table reports on the [Gender Results Framework](https://women-gender-equality.canada.ca/en/gender-results-framework.html) (GRF), introduced by the Government of Canada in 2018 to track the progress of gender equality in Canada. The new data table also includes data collected through the 2020 [Survey on Sexual Misconduct at Work](https://www23.statcan.gc.ca/imdb/p2SV.pl?Function=getSurvey&SDDS=5290) (SSMW).
-
-**Are there criminal penalties or civil remedies for sexual harassment in employment?**
-
-[The Daily — Gender Results Framework: A new data table on workplace harassment](https://www150.statcan.gc.ca/n1/daily-quotidien/240212/dq240212a-eng.htm)
-
-https://www.learningtoendabuse.ca/research/national_survey_on_harassment_and_violence_at_work_in_canada/plain_text_documents/exploring_the_intersections_of_sexual_violence_and_precarious_work_a_literature_review.html
-
----
-
-Pay (100)
-
-## Second discussion point
-
-## Third discussion point
+## Third discussion point {#sec-point3}
 
 ## Weaknesses and next steps
 
-Weaknesses and next steps should also be included.
 
 \newpage
 
 \appendix
 
 # Appendix {-}
-
-
-
-
-
-## Diagnostics
-
-@fig-stanareyouokay-1 is a trace plot. It shows... This suggests...
-
-@fig-stanareyouokay-2 is a Rhat plot. It shows... This suggests...
-
-
 
 
 \newpage

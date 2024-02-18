@@ -11,8 +11,8 @@ library(tidyverse)
 library(haven)
 library(readxl) 
 
-#### Read in data ####
-wb_data <- read_excel("inputs/data/repl_package/Data/WBL50YearPanelData.xlsx", sheet = "WBL1971-2020", range = "B2:AX9502", col_names = TRUE)
+#### Read in data from Excel file ####
+wb_data <- read_excel("Replication Package/Data/WBL50YearPanelData.xlsx", sheet = "WBL1971-2020", range = "B2:AX9502", col_names = TRUE)
 
 # Rename clunky col names 
 wb_data <- wb_data |>
@@ -91,5 +91,24 @@ wb_data <- wb_data |> select(-all_of(yn))
 # Rename the new variables to the original names
 wb_data <- wb_data |> rename_with(~ str_remove(., "n"), starts_with("n"))
 
-# Clean up 
+# Clean up some labels. 
 
+wb_data <- wb_data |>
+            rename(`economy` = `Economy`) |>
+            rename(`countrycode` = `Code`)
+
+wb_data$countrycode <- ifelse(wb_data$economy == "West Bank and Gaza", "PSE", wb_data$countrycode)
+wb_data$countrycode <- ifelse(wb_data$economy == "Kosovo", "XKX", wb_data$countrycode)
+wb_data$countrycode <- ifelse(wb_data$economy == "Romania", "ROU", wb_data$countrycode)
+wb_data$countrycode <- ifelse(wb_data$economy == "Congo, Dem. Rep.", "COD", wb_data$countrycode)
+wb_data$countrycode <- ifelse(wb_data$economy == "Timor-Leste", "TLS", wb_data$countrycode)
+
+wb_data$economy <- ifelse(wb_data$economy == "Côte d'Ivoire", "Cote d'Ivoire", wb_data$economy)
+wb_data$economy <- ifelse(wb_data$economy == "São Tomé and Príncipe", "Sao Tome and Principe", wb_data$economy)
+wb_data$economy <- ifelse(wb_data$economy == "Puerto Rico (U.S.)", "Sao Tome and Principe", wb_data$economy)
+wb_data$economy <- ifelse(wb_data$economy == "North Macedonia", "Macedonia, FYR", wb_data$economy)
+
+write_csv(
+  x = wb_data,
+  file = "outputs/data/wb_data_clean.csv", 
+)
