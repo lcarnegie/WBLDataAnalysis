@@ -1,10 +1,10 @@
 ---
-title: "My title"
-subtitle: "My subtitle if needed"
+title: "Women and Gender Pay Gap "
+subtitle: "Faulty World Bank Data Conflicts: A Canadian Example"
 author: 
-  - First author
-  - Another author
-thanks: "Code and data are available at: LINK."
+  - Sehar Bajwa
+  - Luca Carnegie
+thanks: "Code and data are available at: https://github.com/lcarnegie/replicationpaper. "
 date: today
 date-format: long
 abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
@@ -25,9 +25,7 @@ library(palmerpenguins)
 
 # Introduction
 
-You can and should cross-reference sections and sub-sections. 
-
-The remainder of this paper is structured as follows. @sec-data....
+SEE Discussion for paper idea. Basically there is world bank data about women and the labour market with data from 180+ countries that give a overview of the progression of women's outcomes in the labour market. However, when you compaire it with local Canadian data in the example of canada, the statistics don't really match up, therefore the data has a lot of probelms with collection. And we'd expand on that in our replication but the replication is not done (yet).
 
 
 
@@ -35,40 +33,12 @@ The remainder of this paper is structured as follows. @sec-data....
 
 Some of our data is of penguins (@fig-bills), from @palmerpenguins.
 
-```{r}
-#| label: fig-bills
-#| fig-cap: Bills of penguins
-#| echo: false
-
-ggplot(penguins, aes(x = island, fill = species)) +
-  geom_bar(alpha = 0.8) +
-  scale_fill_manual(values = c("darkorange","purple","cyan4"),
-                    guide = "none") +
-  theme_minimal() +
-  facet_wrap(~species, ncol = 1) +
-  coord_flip()
-```
 
 Talk more about it.
 
 And also planes (@fig-planes). (You can change the height and width, but don't worry about doing that until you have finished every other aspect of the paper - Quarto will try to make it look nice and the defaults usually work well once you have enough text.)
 
-```{r}
-#| label: fig-planes
-#| fig-cap: Relationship between wing length and width
-#| echo: false
-#| warning: false
-#| message: false
 
-analysis_data <- read_csv(here::here("outputs/data/analysis_data.csv"))
-
-analysis_data |> 
-  ggplot(aes(x = width, y = length)) +
-  geom_point(alpha = 0.8) +
-  theme_minimal() +
-  labs(x = "Wing width (mm)",
-       y = "Wing length (mm)")
-```
 
 Talk way more about it. 
 
@@ -107,33 +77,7 @@ We can use maths by including latex between dollar signs, for instance $\theta$.
 
 Our results are summarized in @tbl-modelresults.
 
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
 
-library(rstanarm)
-
-first_model <-
-  readRDS(file = here::here("outputs/models/first_model.rds"))
-```
-
-```{r}
-#| echo: false
-#| eval: true
-#| label: tbl-modelresults
-#| tbl-cap: "Explanatory models of flight time based on wing width and wing length"
-#| warning: false
-
-modelsummary::modelsummary(
-  list(
-    "First model" = first_model
-  ),
-  statistic = "mad",
-  fmt = 2
-)
-```
 
 
 
@@ -142,7 +86,59 @@ modelsummary::modelsummary(
 
 ## First discussion point {#sec-first-point}
 
-If my paper were 10 pages, then should be be at least 2.5 pages. The discussion is a chance to show off what you know and what you learnt from all this. 
+Can a woman choose where to live in the same way as a man?
+
+Can a woman travel outside her home in the same way as a man?
+
+Yes, they can but is a surface level question, because women do not travel the same way. Possible discussion of how transit designs are gender neutral, why designing for trip chaining is important. 
+
+---
+
+[](https://static1.squarespace.com/static/57b25a1d579fb3a225546f2e/t/61f60fc732982f3789c5741d/1643521217247/finalreport.pdf)
+
+---
+
+Can a woman apply for a passport in the same way as a man?
+
+---
+
+Can a woman travel outside the country in the same way as a man?
+
+---
+
+**Workplace 100 (2010-2023)**
+
+Can a woman get a job in the same way as a man?
+
+[The gender wage gap in Canada: 1998 to 2018](https://www150.statcan.gc.ca/n1/pub/75-004-m/75-004-m2019004-eng.htm)
+
+https://canadianwomen.org/blog/the-gender-pay-gap-is-a-myth/
+
+Does the law prohibit discrimination in employment based on gender?
+
+• In 2018, female employees aged 25 to 54 earned $4.13 (or 13.3%) less per hour, on average, than their male counterparts. In other words, these women earned $0.87 for every dollar earned by men.
+
+- The two largest factors explaining the remaining gender wage gap in 2018 were the distribution of women and men across industries, and women’s overrepresentation in part-time work. These were also the largest explanatory factors behind the gap in 1998.
+- Similar to other studies, nearly two-thirds of the gap in 2018 was unexplained. Possible explanations for this portion include gender differences in characteristics that were beyond the scope of this study, such as work experience, as well as unobservable factors, such as any gender-related biases.
+- **Note: The difference between men’s and women’s average wages was found to be statistically significant at a 95% confidence level.**
+
+**Is there legislation on sexual harassment in employment?**
+
+he infographic "[Sexual misconduct and gender-based discrimination at work, 2020](https://www150.statcan.gc.ca/en/catalogue/11-627-M2021061)", released in 2021, indicated that 25% of women and 17% of men experienced sexual misconduct in their workplace in the previous year. Statistics Canada also reported that women were twice as likely as men to experience unwanted sexual behaviours in the workplace.
+
+The largest proportion of women reported ever experiencing inappropriate sexualized behaviours in a workplace setting (44%), followed by discriminatory behaviours (20%) and sexual assault (13%).
+
+Statistics Canada's [Centre for Gender, Diversity and Inclusion Statistics](https://www.statcan.gc.ca/en/topics-start/gender_diversity_and_inclusion), in collaboration with the Canadian Centre for Justice and Community Safety Statistics, has released a new data table on experiences of harassment and sexual assault in the workplace. This data table reports on the [Gender Results Framework](https://women-gender-equality.canada.ca/en/gender-results-framework.html) (GRF), introduced by the Government of Canada in 2018 to track the progress of gender equality in Canada. The new data table also includes data collected through the 2020 [Survey on Sexual Misconduct at Work](https://www23.statcan.gc.ca/imdb/p2SV.pl?Function=getSurvey&SDDS=5290) (SSMW).
+
+**Are there criminal penalties or civil remedies for sexual harassment in employment?**
+
+[The Daily — Gender Results Framework: A new data table on workplace harassment](https://www150.statcan.gc.ca/n1/daily-quotidien/240212/dq240212a-eng.htm)
+
+https://www.learningtoendabuse.ca/research/national_survey_on_harassment_and_violence_at_work_in_canada/plain_text_documents/exploring_the_intersections_of_sexual_violence_and_precarious_work_a_literature_review.html
+
+---
+
+Pay (100)
 
 ## Second discussion point
 
@@ -159,36 +155,8 @@ Weaknesses and next steps should also be included.
 # Appendix {-}
 
 
-# Additional data details
 
-# Model details {#sec-model-details}
 
-## Posterior predictive check
-
-In @fig-ppcheckandposteriorvsprior-1 we implement a posterior predictive check. This shows...
-
-In @fig-ppcheckandposteriorvsprior-2 we compare the posterior with the prior. This shows... 
-
-```{r}
-#| eval: true
-#| echo: false
-#| message: false
-#| warning: false
-#| label: fig-ppcheckandposteriorvsprior
-#| layout-ncol: 2
-#| fig-cap: "Examining how the model fits, and is affected by, the data"
-#| fig-subcap: ["Posterior prediction check", "Comparing the posterior with the prior"]
-
-pp_check(first_model) +
-  theme_classic() +
-  theme(legend.position = "bottom")
-
-posterior_vs_prior(first_model) +
-  theme_minimal() +
-  scale_color_brewer(palette = "Set1") +
-  theme(legend.position = "bottom") +
-  coord_flip()
-```
 
 ## Diagnostics
 
@@ -196,20 +164,6 @@ posterior_vs_prior(first_model) +
 
 @fig-stanareyouokay-2 is a Rhat plot. It shows... This suggests...
 
-```{r}
-#| echo: false
-#| eval: true
-#| message: false
-#| warning: false
-#| label: fig-stanareyouokay
-#| fig-cap: "Checking the convergence of the MCMC algorithm"
-#| fig-subcap: ["Trace plot", "Rhat plot"]
-#| layout-ncol: 2
-
-plot(first_model, "trace")
-
-plot(first_model, "rhat")
-```
 
 
 
