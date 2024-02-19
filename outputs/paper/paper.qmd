@@ -1,11 +1,11 @@
 ---
-title: "Women and Gender Pay Gap "
-subtitle: "Faulty World Bank Data Conflicts: A Canadian Example"
+title: "The World Bank, Women, Business and the Law"
+subtitle: "The Need for better checking of Data"
 author: 
   - Sehar Bajwa
   - Luca Carnegie
 thanks: "Code and data are available at: https://github.com/lcarnegie/replicationpaper. "
-date: today
+date: February 20, 2024
 date-format: long
 abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
 format: pdf
@@ -13,12 +13,16 @@ number-sections: true
 bibliography: references.bib
 ---
 
-```{r}
+```{r workspace-setup}
 #| include: false
 #| warning: false
 #| message: false
 
 library(tidyverse)
+
+## WBL Dataset Setup
+
+wb_data <- read_csv(here::here("outputs/data/wb_data_clean.csv"))
 ```
 
 
@@ -26,6 +30,9 @@ library(tidyverse)
 
 
 # Data {#sec-data}
+
+## Source {#subsec1-data}
+## Methodology {#subsec2-data}
 
 
 # Results {#sec-results}
@@ -44,14 +51,20 @@ library(tidyverse)
 
 \newpage
 
+# References
+
+::: {#refs}
+:::
+
+\newpage
+
+
 \appendix
 
 # Appendix {-}
 
 
-\newpage
 
 
-# References
 
 
