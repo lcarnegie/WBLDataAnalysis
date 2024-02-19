@@ -190,11 +190,71 @@ First sentence. Second sentence. Third sentence. Fourth sentence.
 
 \section{Introduction}\label{introduction}
 
+Despite the many decades' worth of progress in gender equality
+throughout the world, one of the enduring types of gender discrimination
+worldwide is in the eyes of the law. Though much progress has been made
+in western, high-income countries, there remains vast swaths of the
+world where women may not vote, work, or participate in the same
+activities as men do, due to the presence of gendered laws. To trace the
+progression of economic opportunities of women in the world's 190
+countries, the World Bank constructed their ``Women, Business, and the
+Law'' (WBL) dataset, which Hyland et. al make of primary interest in
+their paper ``Gendered Laws and Women in the Workforce''. In Sections 2
+and 3, we analyze and replicate some of the key graphs and insights from
+their paper. Building on their work in Sections 4 and 5, we call into
+question the data collection methods of the World Bank, finding data
+from Statistics Canada that conflict with the data {[}or whatever Sehar
+finds{]}, outlining the importance that accurate data have in being able
+to fully understand the complex picture of women and the law throughout
+the world.
+
 \section{Data}\label{sec-data}
+
+Hyland et al.'s original paper primarily makes use of the `Women,
+Business, and the Law' dataset (WBL) from the World Bank, along with
+some others to help compare and contextualize the data. In our
+replication, however, we will be focusing on aspects of this dataset
+only.
 
 \subsection{Source}\label{subsec1-data}
 
-\subsection{Methodology}\label{subsec2-data}
+The Women, Business, and the Law dataset is organized across thirty-five
+aspects of the law, which are scored across eight indicators of four or
+five binary questions. Each indicator represents a different phase of a
+woman's career: Mobility, Workplace, Pay, Marriage, Parenthood,
+Entrepreneurship, Assets, and Pension. Answers to the binary questions
+were sourced, pro-bono, from respondents with expertise in laws on
+family, labor and violence against women. It not clear where in their
+countries' legal systems the respondents were when they were polled. The
+indicators are as follows:
+
+\begin{verbatim}
+Mobility: Examines constraints on women’s freedom of movement. 
+Workplace: Analyzes laws affecting a woman’s decision to work
+Pay: Measures laws and regulations affecting a woman’s pay
+Marriage: Assesses constraints related to marriage
+Parenthood: Examines laws that affect women’s work after having children
+Entrepreneurship: Assesses constraints to women starting and running a business
+Assets: covers property ownership rights, inheritance rights (both for children and surviving spouses), authority of assets during marriage, and valuation of nonmonetary contributions. 
+Pension: captures the equalization of retirement ages (with full and partial benefits as well as the mandatory retirement age) and whether periods of absence from employment due to childcare are accounted for in pension benefits. 
+
+Indicator-level scores are obtained by calculating the unweighted average of the questions within that indicator and scaling the result to 100. Overall scores are then calculated by taking the average of each indicator, with 100 representing the highest possible score. Each binary question either contributes 20 or 25 points, depending on the indicator. The indicators and index mainly capture the effect labour laws have on the employment outcomes of women in the labour force. It does not take into account laws affecting their acquisition of human capital (e.g. required education laws) nor laws affecting reproductive rights, for instance, which Hyland et al. point to as an issue but concede would be difficult to quantify easily. The World Bank's methodology was designed as an easily replicable measure of the legal environment for women as entrepreneurs and employees, which, for a dataset of it's size and breadth, is comprehensive. In their paper, they then use the dataset to present 'stylized facts' which either unearth new facts about gendered laws or are quantifications of what they write were previously known qualitatively. 
+
+
+Figures 1A, 1B, and 2 were replicated from the original paper. 
+
+
+Figure 1A shows the average unweighted aggregate WBL index score in 2019, compared across regions. It shows notable differences between higher-income countries and the rest of the world, most notably between higher income countries and countries in the Middle East and North Africa - there is a almost 25 index-point difference between them. In the context of this dataset, it indicates that women in high-income countries enjoy about 36 percent more legal rights related to employment than those in the Middle East and North Africa. 
+
+Figure 1B breaks down aggregate index for 2019 into it's constituent indicators and shows the global average score for each indicator. As Hyland et al pointed out, the 'Parenthood' Indicator was the lowest overall, meaning that globally, women generally enjoy fewer legal rights in employment after they have had children than before. 
+\end{verbatim}
+
+Figure 2 shows the progression of the aggregate WBL index over time,
+broken down by region. As expected, high-income countries dominate in
+index score, but interestingly Latin American women enjoyed more rights
+than even European/Central Asian women between 1995-2000. Employment
+rights for women in Sub-Saharan Africa have also seen the most growth
+since tracking began in 1971. \#\# Methodology \{\#subsec2-data\}
 
 \section{Results}\label{sec-results}
 

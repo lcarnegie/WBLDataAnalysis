@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.2.18)  18 FEB 2024 23:13
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.2.18)  19 FEB 2024 15:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -867,6 +867,36 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 
 
 ]
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 250--250
+[]\TU/lmtt/m/n/10.95 Entrepreneurship: Assesses constraints to women starting and running a business[] 
+ []
+
+
+Overfull \hbox (611.00974pt too wide) in paragraph at lines 250--250
+[]\TU/lmtt/m/n/10.95 Assets: covers property ownership rights, inheritance rights (both for children and surviving spouses), authority of assets during marriage, and valuation of nonmonetary contributions.[] 
+ []
+
+
+Overfull \hbox (869.70343pt too wide) in paragraph at lines 250--250
+[]\TU/lmtt/m/n/10.95 Pension: captures the equalization of retirement ages (with full and partial benefits as well as the mandatory retirement age) and whether periods of absence from employment due to childcare are accounted for in pension benefits.[] 
+ []
+
+
+Overfull \hbox (6118.31107pt too wide) in paragraph at lines 250--250
+[]\TU/lmtt/m/n/10.95 Indicator-level scores are obtained by calculating the unweighted average of the questions within that indicator and scaling the result to 100. Overall scores are then calculated by taking the average of each indicator, with 100 representing the highest possible score. Each binary question either contributes 20 or 25 points, depending on the indicator. The indicators and index mainly capture the effect labour laws have on the employment outcomes of women in the labour force. It does not take into account laws affecting their acquisition of human capital (e.g. required education laws) nor laws affecting reproductive rights, for instance, which Hyland et al. point to as an issue but concede would be difficult to quantify easily. The World Bank's methodology was designed as an easily replicable measure of the legal environment for women as entrepreneurs and employees, which, for a dataset of it's size and breadth, is comprehensive. In their paper, they then use the dataset to present 'stylized facts' which either unearth new facts about gendered laws or are quantifications of what they write were previously known qualitatively.[] 
+ []
+
+
+Overfull \hbox (2617.32306pt too wide) in paragraph at lines 250--250
+[]\TU/lmtt/m/n/10.95 Figure 1A shows the average unweighted aggregate WBL index score in 2019, compared across regions. It shows notable differences between higher-income countries and the rest of the world, most notably between higher income countries and countries in the Middle East and North Africa - there is a almost 25 index-point difference between them. In the context of this dataset, it indicates that women in high-income countries enjoy about 36 percent more legal rights related to employment than those in the Middle East and North Africa.[] 
+ []
+
+
+Overfull \hbox (1473.32205pt too wide) in paragraph at lines 250--250
+[]\TU/lmtt/m/n/10.95 Figure 1B breaks down aggregate index for 2019 into it's constituent indicators and shows the global average score for each indicator. As Hyland et al pointed out, the 'Parenthood' Indicator was the lowest overall, meaning that globally, women generally enjoy fewer legal rights in employment after they have had children than before.[] 
+ []
+
+[2] [3]
 
 ! LaTeX Error: Something's wrong--perhaps a missing \item.
 
@@ -874,15 +904,15 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.217 \end{CSLReferences}
+l.277 \end{CSLReferences}
                           
 Here is how much of TeX's memory you used:
- 21614 strings out of 476798
- 419524 string characters out of 5801938
- 1925650 words of memory out of 5000000
- 43356 multiletter control sequences out of 15000+600000
- 566484 words of font info for 99 fonts, out of 8000000 for 9000
+ 21618 strings out of 476798
+ 419633 string characters out of 5801938
+ 1938650 words of memory out of 5000000
+ 43358 multiletter control sequences out of 15000+600000
+ 566492 words of font info for 100 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 108i,7n,121p,10900b,328s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 108i,7n,121p,10900b,331s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on paper.pdf (1 page).
+Output written on paper.pdf (3 pages).

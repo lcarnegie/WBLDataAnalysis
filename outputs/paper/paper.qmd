@@ -28,11 +28,131 @@ wb_data <- read_csv(here::here("outputs/data/wb_data_clean.csv"))
 
 # Introduction
 
+Despite the many decades' worth of progress in gender equality throughout the world, one of the enduring types of gender discrimination worldwide is in the eyes of the law. Though much progress has been made in western, high-income countries, there remains vast swaths of the world where women may not vote, work, or participate in the same activities as men do, due to the presence of gendered laws. To trace the progression of economic opportunities of women in the world's 190 countries, the World Bank constructed their "Women, Business, and the Law" (WBL) dataset, which Hyland et. al make of primary interest in their paper "Gendered Laws and Women in the Workforce". In Sections 2 and 3, we analyze and replicate some of the key graphs and insights from their paper. Building on their work in Sections 4 and 5, we  call into question the data collection methods of the World Bank, finding data from Statistics Canada that conflict with the data [or whatever Sehar finds], outlining the importance that accurate data have in being able to fully understand the complex picture of women and the law throughout the world.
+
 
 # Data {#sec-data}
 
+Hyland et al.'s original paper primarily makes use of the 'Women, Business, and the Law' dataset (WBL) from the World Bank, along with some others to help compare and contextualize the data. In our replication, however, we will be focusing on aspects of this dataset only. 
+
 ## Source {#subsec1-data}
+
+The Women, Business, and the Law dataset is organized across thirty-five aspects of the law, which are scored across eight indicators of four or five binary questions. Each indicator represents a different phase of a woman’s career: Mobility, Workplace, Pay, Marriage, Parenthood, Entrepreneurship, Assets, and Pension. Answers to the binary questions were sourced, pro-bono, from respondents with expertise in laws on family, labor and violence against women. It not clear where in their countries' legal systems the respondents were when they were polled. The indicators are as follows: 
+	
+	Mobility: Examines constraints on women’s freedom of movement. 
+	Workplace: Analyzes laws affecting a woman’s decision to work
+	Pay: Measures laws and regulations affecting a woman’s pay
+	Marriage: Assesses constraints related to marriage
+	Parenthood: Examines laws that affect women’s work after having children
+	Entrepreneurship: Assesses constraints to women starting and running a business
+	Assets: covers property ownership rights, inheritance rights (both for children and surviving spouses), authority of assets during marriage, and valuation of non-monetary contributions. 
+	Pension: captures the equalization of retirement ages (with full and partial benefits as well as the mandatory retirement age) and whether periods of absence from employment due to childcare are accounted for in pension benefits. 
+	
+	Indicator-level scores are obtained by calculating the unweighted average of the questions within that indicator and scaling the result to 100. Overall scores are then calculated by taking the average of each indicator, with 100 representing the highest possible score. Each binary question either contributes 20 or 25 points, depending on the indicator. The indicators and index mainly capture the effect labour laws have on the employment outcomes of women in the labour force. It does not take into account laws affecting their acquisition of human capital (e.g. required education laws) nor laws affecting reproductive rights, for instance, which Hyland et al. point to as an issue but concede would be difficult to quantify easily. The World Bank's methodology was designed as an easily replicable measure of the legal environment for women as entrepreneurs and employees, which, for a dataset of it's size and breadth, is comprehensive. In their paper, they then use the dataset to present 'stylized facts' which either unearth new facts about gendered laws or are quantifications of what they write were previously known qualitatively. 
+	
+	
+	Figures 1A, 1B, and 2 were replicated from the original paper.
+	
+	
+```{r hyland-fig-1A}
+#| message: false
+#| echo: false
+#| warning: false
+#| fig-cap: Figure 1A from Hyland et al. 
+#| fig-align: center
+
+## Replication of Figure 1A: Avg. WBL Index in 2019
+
+
+# average out the index across regions
+region_avg_index <- wb_data |> group_by(Region) |> filter(`WBL Report Year` == 2019) |>
+                    summarise(avg_index = mean(`WBL_index`, na.rm = TRUE), .groups = "drop")
+
+
+# Plot in ggplot2
+
+  ggplot(data = region_avg_index, mapping = aes(x = Region, y = avg_index)) +
+  geom_col() +
+  labs(title="Average WBL Index by World Region, 2019", x="Region", y="WBL Index") +
+  theme_minimal() +
+  ylim (NA, 100) +
+  theme(plot.title.position = "plot",
+        plot.title = element_text(hjust = 0.5), 
+        axis.text.x = element_text (angle = 45, vjust = 1, hjust=1))
+
+```
+	
+	
+	Figure 1A shows the average unweighted aggregate WBL index score in 2019, compared across regions. It shows notable differences between higher-income countries and the rest of the world, most notably between higher income countries and countries in the Middle East and North Africa - there is a almost 25 index-point difference between them. In the context of this dataset, it indicates that women in high-income countries enjoy about 36 percent more legal rights related to employment than those in the Middle East and North Africa.
+	
+```{r hyland-fig-1B}
+#| message: false
+#| echo: false
+#| warning: false
+#| fig-cap: Figure 1B from Hyland et al. 
+#| fig-align: center
+
+## Replication of Figure 1A: Avg. WBL Index in 2019
+
+
+# average out the index across regions
+region_avg_index <- wb_data |> group_by(Region) |> filter(`WBL Report Year` == 2019) |>
+                    summarise(avg_index = mean(`WBL_index`, na.rm = TRUE), .groups = "drop")
+
+
+# Plot in ggplot2
+
+  ggplot(data = region_avg_index, mapping = aes(x = Region, y = avg_index)) +
+  geom_col() +
+  labs(title="Average WBL Index by World Region, 2019", x="Region", y="WBL Index") +
+  theme_minimal() +
+  ylim (NA, 100) +
+  theme(plot.title.position = "plot",
+        plot.title = element_text(hjust = 0.5), 
+        axis.text.x = element_text (angle = 45, vjust = 1, hjust=1))
+
+```
+	
+	Figure 1B breaks down aggregate index for 2019 into it's constituent indicators and shows the global average score for each indicator. As Hyland et al pointed out, the 'Parenthood' Indicator was the lowest overall, meaning that globally, women generally enjoy fewer legal rights in employment after they have had children than before. 
+	
+```{r hyland-fig-2}
+#| message: false
+#| echo: false
+#| warning: false
+#| fig-cap: Figure 2 from Hyland et al. 
+#| fig-align: center
+
+## Replication of Figure 2:  Charting the Progress of Legal Gender Equality over Time
+  
+
+#construct tibble of yearly averages of regions.   
+regional_avgs_byyear <- wb_data |> select(
+                            `WBL Report Year`, 
+                            Region, 
+                            WBL_index
+                        ) |> group_by(Region, `WBL Report Year`) |> 
+                             summarise(avg_index = mean(`WBL_index`, na.rm = TRUE), .groups = "drop")
+
+# Sling into ggplot2
+
+regional_avgs_byyear |> 
+  ggplot(aes(x=`WBL Report Year`, y=avg_index, group=Region, color=Region)) +
+  geom_line() +
+  labs(title="WBL Index Progression since 1971, by Region", x="Year", y="WBL Index") +
+  scale_color_manual(values=c("red", "blue", "green", "orange", "purple", "turquoise", "black"), labels=c("East Asia/Pacific","Europe/Central Asia", "High Income Countries (OECD)", "Latin America/Caribbean", "Middle East/North Africa", "South Asia", "Sub-Saharan Africa")) +
+  theme_minimal() +
+  ylim (NA, 100) + 
+  theme(plot.title.position = "plot",
+        plot.title = element_text(hjust = 0.5))
+
+```
+	
+Figure 2 shows the progression of the aggregate WBL index over time, broken down by region. As expected, high-income countries dominate in index score, but interestingly Latin American women enjoyed more rights than even European/Central Asian women between 1995-2000.  Employment rights for women in Sub-Saharan Africa have also seen the most growth since tracking began in 1971.
+
+
 ## Methodology {#subsec2-data}
+
+R [cite] and it's tidyverse [cite] and dplyr [cite] packages were primarily used when analysing the WBL dataset. Like Hyland, this dataset will be of main focus in our analysis. Other datasets that helped their paper, such as Wage Gap data from the International Labour Organization and the OECD (Organization for Economic Cooperation and Development), and World Development Indicators data is not important to our analysis. 
 
 
 # Results {#sec-results}
