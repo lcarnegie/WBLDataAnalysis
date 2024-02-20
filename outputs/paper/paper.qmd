@@ -1,11 +1,11 @@
 ---
-title: "Women and Gender Pay Gap "
-subtitle: "Faulty World Bank Data Conflicts: A Canadian Example"
+title: "The World Bank, Women, Business and the Law"
+subtitle: "The Need for better checking of Data"
 author: 
   - Sehar Bajwa
   - Luca Carnegie
 thanks: "Code and data are available at: https://github.com/lcarnegie/replicationpaper. "
-date: today
+date: February 20, 2024
 date-format: long
 abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
 format: pdf
@@ -13,27 +13,191 @@ number-sections: true
 bibliography: references.bib
 ---
 
-```{r}
+```{r workspace-setup}
 #| include: false
 #| warning: false
 #| message: false
 
 library(tidyverse)
+
+## WBL Dataset Setup
+
+wb_data <- read_csv(here::here("outputs/data/wb_data_clean.csv"))
 ```
 
 
 # Introduction
 
+Despite the many decades' worth of progress in gender equality throughout the world, one of the enduring types of gender discrimination worldwide is in the eyes of the law. Though much progress has been made in western, high-income countries, there remains vast swaths of the world where women may not vote, work, or participate in the same activities as men do, due to the presence of gendered laws. To trace the progression of economic opportunities of women in the world's 190 countries, the World Bank constructed their "Women, Business, and the Law" (WBL) dataset, which Hyland et. al make of primary interest in their paper "Gendered Laws and Women in the Workforce". In Sections 2 and 3, we analyze and replicate some of the key graphs and insights from their paper. Building on their work in Sections 4 and 5, we  call into question the data collection methods of the World Bank, finding data from Statistics Canada that conflict with the data [or whatever Sehar finds], outlining the importance that accurate data have in being able to fully understand the complex picture of women and the law throughout the world.
+
 
 # Data {#sec-data}
 
+Hyland et al.'s original paper primarily makes use of the 'Women, Business, and the Law' dataset (WBL) from the World Bank, along with some others to help compare and contextualize the data. In our replication, however, we will be focusing on aspects of this dataset only. 
 
-# Results {#sec-results}
+## Source {#subsec1-data}
+
+The Women, Business, and the Law dataset is organized across thirty-five aspects of the law, which are scored across eight indicators of four or five binary questions. Each indicator represents a different phase of a woman’s career: Mobility, Workplace, Pay, Marriage, Parenthood, Entrepreneurship, Assets, and Pension. Answers to the binary questions were sourced, pro-bono, from respondents with expertise in laws on family, labor and violence against women. It not clear where in their countries' legal systems the respondents were when they were polled. The indicators are as follows: 
+	
+	Mobility: Examines constraints on women’s freedom of movement. 
+	Workplace: Analyzes laws affecting a woman’s decision to work
+	Pay: Measures laws and regulations affecting a woman’s pay
+	Marriage: Assesses constraints related to marriage
+	Parenthood: Examines laws that affect women’s work after having children
+	Entrepreneurship: Assesses constraints to women starting and running a business
+	Assets: covers property ownership rights, inheritance rights (both for children and surviving spouses), authority of assets during marriage, and valuation of non-monetary contributions. 
+	Pension: captures the equalization of retirement ages (with full and partial benefits as well as the mandatory retirement age) and whether periods of absence from employment due to childcare are accounted for in pension benefits. 
+	
+	Indicator-level scores are obtained by calculating the unweighted average of the questions within that indicator and scaling the result to 100. Overall scores are then calculated by taking the average of each indicator, with 100 representing the highest possible score. Each binary question either contributes 20 or 25 points, depending on the indicator. The indicators and index mainly capture the effect labour laws have on the employment outcomes of women in the labour force. It does not take into account laws affecting their acquisition of human capital (e.g. required education laws) nor laws affecting reproductive rights, for instance, which Hyland et al. point to as an issue but concede would be difficult to quantify easily. The World Bank's methodology was designed as an easily replicable measure of the legal environment for women as entrepreneurs and employees, which, for a dataset of it's size and breadth, is comprehensive. In their paper, they then use the dataset to present 'stylized facts' which either unearth new facts about gendered laws or are quantifications of what they write were previously known qualitatively. 
+	
+	
+	Figures 1A, 1B, and 2 were replicated from the original paper.
+	
+	
+```{r hyland-fig-1A}
+#| message: false
+#| echo: false
+#| warning: false
+#| fig-cap: Figure 1A from Hyland et al. 
+#| fig-align: center
+
+## Replication of Figure 1A: Avg. WBL Index in 2019
 
 
-# Discussion
+# average out the index across regions
+region_avg_index <- wb_data |> group_by(Region) |> filter(`WBL Report Year` == 2019) |>
+                    summarise(avg_index = mean(`WBL_index`, na.rm = TRUE), .groups = "drop")
 
-## First discussion point {#sec-point1}
+
+# Plot in ggplot2
+
+  ggplot(data = region_avg_index, mapping = aes(x = Region, y = avg_index)) +
+  geom_col() +
+  labs(title="Average WBL Index by World Region, 2019", x="Region", y="WBL Index") +
+  theme_minimal() +
+  ylim (NA, 100) +
+  theme(plot.title.position = "plot",
+        plot.title = element_text(hjust = 0.5), 
+        axis.text.x = element_text (angle = 45, vjust = 1, hjust=1))
+
+```
+	
+	
+	Figure 1A shows the average unweighted aggregate WBL index score in 2019, compared across regions. It shows notable differences between higher-income countries and the rest of the world, most notably between higher income countries and countries in the Middle East and North Africa - there is a almost 25 index-point difference between them. In the context of this dataset, it indicates that women in high-income countries enjoy about 36 percent more legal rights related to employment than those in the Middle East and North Africa.
+	
+```{r hyland-fig-1B}
+#| message: false
+#| echo: false
+#| warning: false
+#| fig-cap: Figure 1B from Hyland et al. 
+#| fig-align: center
+
+## Replication of Figure 1A: Avg. WBL Index in 2019
+
+
+# average out the index across regions
+region_avg_index <- wb_data |> group_by(Region) |> filter(`WBL Report Year` == 2019) |>
+                    summarise(avg_index = mean(`WBL_index`, na.rm = TRUE), .groups = "drop")
+
+
+# Plot in ggplot2
+
+  ggplot(data = region_avg_index, mapping = aes(x = Region, y = avg_index)) +
+  geom_col() +
+  labs(title="Average WBL Index by World Region, 2019", x="Region", y="WBL Index") +
+  theme_minimal() +
+  ylim (NA, 100) +
+  theme(plot.title.position = "plot",
+        plot.title = element_text(hjust = 0.5), 
+        axis.text.x = element_text (angle = 45, vjust = 1, hjust=1))
+
+```
+	
+	Figure 1B breaks down aggregate index for 2019 into it's constituent indicators and shows the global average score for each indicator. As Hyland et al pointed out, the 'Parenthood' Indicator was the lowest overall, meaning that globally, women generally enjoy fewer legal rights in employment after they have had children than before. 
+	
+```{r hyland-fig-2}
+#| message: false
+#| echo: false
+#| warning: false
+#| fig-cap: Figure 2 from Hyland et al. 
+#| fig-align: center
+
+## Replication of Figure 2:  Charting the Progress of Legal Gender Equality over Time
+  
+
+#construct tibble of yearly averages of regions.   
+regional_avgs_byyear <- wb_data |> select(
+                            `WBL Report Year`, 
+                            Region, 
+                            WBL_index
+                        ) |> group_by(Region, `WBL Report Year`) |> 
+                             summarise(avg_index = mean(`WBL_index`, na.rm = TRUE), .groups = "drop")
+
+# Sling into ggplot2
+
+regional_avgs_byyear |> 
+  ggplot(aes(x=`WBL Report Year`, y=avg_index, group=Region, color=Region)) +
+  geom_line() +
+  labs(title="WBL Index Progression since 1971, by Region", x="Year", y="WBL Index") +
+  scale_color_manual(values=c("red", "blue", "green", "orange", "purple", "turquoise", "black"), labels=c("East Asia/Pacific","Europe/Central Asia", "High Income Countries (OECD)", "Latin America/Caribbean", "Middle East/North Africa", "South Asia", "Sub-Saharan Africa")) +
+  theme_minimal() +
+  ylim (NA, 100) + 
+  theme(plot.title.position = "plot",
+        plot.title = element_text(hjust = 0.5))
+
+```
+	
+Figure 2 shows the progression of the aggregate WBL index over time, broken down by region. As expected, high-income countries dominate in index score, but interestingly Latin American women enjoyed more rights than even European/Central Asian women between 1995-2000.  Employment rights for women in Sub-Saharan Africa have also seen the most growth since tracking began in 1971.
+
+
+## Methodology {#subsec2-data}
+
+R [cite] and it's tidyverse [cite] and dplyr [cite] packages were primarily used when analysing the WBL dataset. Like Hyland, this dataset will be of main focus in our analysis. Other datasets that helped their paper, such as Wage Gap data from the International Labour Organization and the OECD (Organization for Economic Cooperation and Development), and World Development Indicators data is not important to our analysis. 
+
+
+# A focus on Canada
+
+In the subsequent section of this paper, our attention will be directed towards a comprehensive cross-referencing analysis, juxtaposing Canada's standing in the World Bank's Women, Business, and the Law (WBL) index across all eight indicators with research data sourced from Statistics Canada. This approach aims to delve deeper into the nuances of Canada's performance in the realm of gender-related legal frameworks and business regulations, providing a nuanced perspective that goes beyond the surface-level rankings.
+
+ By synthesizing the insights derived from the WBL indicators with the robust statistical data from Statistics Canada, we seek to gain a more thorough understanding of the effectiveness and practical implications of Canada's policies and regulations pertaining to women in the business sector. This integrated examination will contribute to a more comprehensive and nuanced evaluation, shedding light on potential areas of alignment or incongruence between the World Bank's assessment and the empirical data provided by Statistics Canada. Through this interdisciplinary approach, we aim to offer a more holistic and informed analysis of the Canadian landscape in terms of gender inclusivity within the legal and business domains.
+
+## Canada in the WBL 
+
+OECD Countries fare particularly well in the WBL Rankings, as evidenced in the graphs in the former sections, with the highest average WBL Indexes and Index Progressions. As a High Income OECD Country, Canada fares particularly well in the WBL Database, scoring 100 across all 8 indicators over the past decade. Cross-referencing the updated database with the one used in the paper reveals the same scores till 2023 as well, revealing that not much has changed post the COVID 19 Pandemic. 
+
+Every indicator within the study is supported by a 'legal basis' as outlined in the original WBL Database, providing a foundation to substantiate the assigned marks for each question. It is essential to note that in the datasheet utilized by Hyland et al, the legal columns were omitted. However, for the purpose of our subsequent analysis, we deem it imperative to reference the official database's legal columns. This is crucial as they not only serve to validate our findings but also contribute valuable insights that may be overlooked when solely relying on the abbreviated dataset used by Hyland et al.
+
+
+# Analysing WBL Indicators from a Canadian viewpoint
+
+## Pay
+
+The first indicator to be scrutinized is Pay, particularly the question that focuses on equal remuneration regardless of gender. Notably, the legal backing for an indicator representative of Canada is one that references only one province, Ontario. Nevertheless, this section will utilize the LFS Survey from Statistics Canada to evaluate if Canada’s perfect rating doesn’t hold up solely on paper.
+
+```{r, results='asis', echo=FALSE}
+library(kableExtra)
+
+# Create a data frame for the table
+data <- data.frame(
+  Indicator = "Pay",
+  Score = 100,
+  Question = "“Does the law mandate equal remuneration for work of equal value?”",
+  Legal_Basis = "Ontario Pay Equity Act, Sec. 6",
+  Achievement_of_pay_equity = "6 (1) For the purposes of this Act, pay equity is achieved under the job-to-job method of comparison when the job rate for the female job class that is the subject of the comparison is at least equal to the job rate for a male job class in the same establishment where the work performed in the two job classes is of equal or comparable value. R.S.O. 1990, c. P.7, s. 6 (1); 1993, c. 4, s. 4 (1).",
+  Relevant_article = "The gender wage gap in Canada: 1998 to 2018 C Labour Statistics: Research Papers by Rachelle Pelletier, Martha Patterson and Melissa Moyser",
+  Stylized_fact = "Women still earn 87 cents for every dollar a man earns in Canada",
+  Link_to_Article = "[Read more](https://www150.statcan.gc.ca/n1/en/pub/75-004-m/75-004-m2019004-eng.pdf?st=szPFyv6s)",
+  Database = "Annualized data from the Labour Force Survey (LFS), a monthly household survey conducted by Statistics Canada.",
+  Additional_info = "56,000 households, no aboriginal settlements or full-time Canadian Armed Force members, remote households in low population density areas"
+)
+
+# Transpose the data frame
+data <- t(data)
+
+# Create a table using kableExtra
+kable(data, format = "markdown") %>%
+  kable_styling()
+```
 
 ## Second discussion point {#sec-point2}
 
@@ -44,14 +208,20 @@ library(tidyverse)
 
 \newpage
 
+# References
+
+::: {#refs}
+:::
+
+\newpage
+
+
 \appendix
 
 # Appendix {-}
 
 
-\newpage
 
 
-# References
 
 
