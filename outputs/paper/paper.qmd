@@ -174,8 +174,13 @@ Every indicator within the study is supported by a 'legal basis' as outlined in 
 
 The first indicator to be scrutinized is Pay, particularly the question that focuses on equal remuneration regardless of gender. Notably, the legal backing for an indicator representative of Canada is one that references only one province, Ontario. Nevertheless, this section will utilize the LFS Survey from Statistics Canada to evaluate if Canada’s perfect rating doesn’t hold up solely on paper.
 
-```{r, results='asis', echo=FALSE}
-library(kableExtra)
+```{r}
+#| message: false
+#| echo: false
+#| warning: false
+#| fig-cap: Figure for pay
+#| fig-align: center
+  library(kableExtra)
 
 # Create a data frame for the table
 pay <- data.frame(
@@ -274,6 +279,11 @@ Utilizing data from Statistics Canada's Centre for Gender, Diversity, and Inclus
 
 The reproduced table from the 2020 Survey on Sexual Misconduct at Work outlines the proportions of employees reporting inappropriate sexualized behavior, discriminatory behavior, and sexual assault in their work environments. Notably, the data highlights the heightened vulnerability of individuals in the 25 to 34 age group, where 57% of females report experiencing sexualized behaviors. Within this age group, women are twice as likely as men to face discrimination and three times as likely to experience sexual assault.
 ```{r}
+#| message: false
+#| echo: false
+#| warning: false
+#| fig-cap: Figure 
+#| fig-align: center
 # Install and load necessary packages if not already installed
  # install.packages("tidyverse")
 
@@ -313,13 +323,11 @@ ggplot(data_long, aes(x = Percentage, y = Group, fill = Category)) +
     legend.box = "horizontal",
     legend.margin = margin(t = 0, unit = "pt")
 )
-
 ```
 
 
 Further analysis of Canadian data reveals that nearly half of women, at 47%, report experiencing some form of harassment or sexual assault in the workplace. The Gender Results Framework (GRF), a key tool for monitoring gender equality in Canada, indicates that women are twice as likely as men to encounter unwanted sexual behaviors in a work environment. Beyond the workplace, Statistics Canada notes that women are three times more likely to experience unwanted sexual behaviors in public, four times more likely to have been sexually assaulted since age 15, and twice as likely to suffer negative emotional consequences from such experiences compared to men. 
 These findings underscore the pervasive nature of gender-based harassment and assault, both within and outside professional settings in Canada, which are far from a pristine perfect ‘100'.
-
 
 ## Weaknesses and next steps
 
