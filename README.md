@@ -14,11 +14,11 @@ The repository is structured as follows:
 
 ## Reproducing Graphs and Tables 
 
-Here is a quick guide to reproducing my graphs and tables.
+Here is a quick guide to reproducing the graphs and tables.
 1. Clone this repository to your computer
-2. Download the data from replication package
-3. Clean it using [the file that cleans it]
-4. Open [path] to test the R code that generated my plots
+2. Download the data from the replication package folder
+3. Clean it using data cleaning file in scripts
+4. Open the paper.qmd file in outputs to test the R code that generated the plots
 
 Reproduction DOI: https://doi.org/10.48152/ssrp-qeab-5493
 
