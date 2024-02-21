@@ -1,0 +1,897 @@
+Certainly! Here are some ways to generate images using AI-based tools:
+
+1. **Image Creator from Microsoft Designer**:
+   - You can create images from words using AI with the **Image Creator from Designer**. It generates images based on your descriptions. ¹⁵
+   - Visit the [Image Creator from Microsoft Designer](https://bing.com/create) and follow the instructions to create images.
+
+2. **getimg.ai**:
+   - **getimg.ai** allows you to describe the image you want, including any adjustments or edits. You can specify prompts and negative prompts for best results. Choose the number of images you'd like to generate and hit "Generate." ²
+   - Visit [getimg.ai](https://getimg.ai/features/image-to-image) to create AI-generated images.
+
+3. **Fotor AI Image Generator**:
+   - Describe what you want directly in the AI picture generator box. Choose the aspect ratio, image style (such as 3D, oil painting, or cartoon), and the number of images you want. Click "Generate" to create AI-generated images. ³
+   - Visit [Fotor AI Image Generator](https://www.fotor.com/ai-image-generator/) to create images.
+
+4. **Pixlr AI Image Generator**:
+   - Click the "Generate" button to initiate the AI-driven image creation process. The tool will create a unique image based on your input parameters. You can save the generated image in your preferred format (JPEG, PNG, or TIFF). ⁴
+   - Visit [Pixlr AI Image Generator](https://pixlr.com/ai/ai-image-generator/) to create and save AI-generated images.
+
+Feel free to explore these tools and create your own custom images! 🎨🌟
+
+Source: Conversation with Bing, 20/02/2024
+(1) Create images from words with AI - Bing. https://www.bing.com/images/create.
+(2) Image Creator from Microsoft Designer - Bing. https://bing.com/create.
+(3) Image to Image AI Generator Online | getimg.ai. https://getimg.ai/features/image-to-image.
+(4) Free AI Image Generator: Text to Image Online | Fotor. https://www.fotor.com/ai-image-generator/.
+(5) AI Image Generator - Pixlr. https://pixlr.com/ai/ai-image-generator/.
+
+Certainly! Let's translate the Stata code to R. We'll create shorter variable names for the labels you've provided. Here's the equivalent R code:
+
+```R
+# Create a data frame (assuming you have one named 'my_data')
+# with the original variable names
+my_data <- data.frame(
+  WBL_index = ...,
+  GR1_mobility = ...,
+  gr1_1passpmrd = ...,
+  gr1_2trvlctrymrd = ...,
+  gr1_3trvlhmmrd = ...,
+  gr1_4whlivemrd = ...,
+  GR2_workplace = ...,
+  gr2_5profhmmrd = ...,
+  gr2_6nondiscempl = ...,
+  gr2_7sexhrssemp = ...,
+  gr2_8sexcomb = ...,
+  GR3_pay = ...,
+  gr3_9eqremunval = ...,
+  gr3_10nprgeqnight = ...,
+  gr3_11jobshazard = ...,
+  gr3_12industry = ...,
+  GR4_marriage = ...,
+  gr4_13obeymrd = ...,
+  gr4_14hhmrd = ...,
+  gr4_15domleg = ...,
+  gr4_16dvrcjdgmnt = ...,
+  gr4_17equalremarr = ...,
+  GR5_parenthood = ...,
+  gr5_18wpdleave14 = ...,
+  gr5_19govleaveprov = ...
+)
+
+# Rename the variables with shorter names
+colnames(my_data) <- c(
+  "WBL",
+  "Mobility",
+  "Passport",
+  "TravelCountry",
+  "TravelHome",
+  "ChooseWhereToLive",
+  "Workplace",
+  "JobOpportunity",
+  "NonDiscrimination",
+  "SexualHarassment",
+  "SexualHarassmentPenalties",
+  "Pay",
+  "EqualRemuneration",
+  "NightWork",
+  "DangerousJobs",
+  "Industry",
+  "Marriage",
+  "NoObedience",
+  "HeadOfHousehold",
+  "DomesticViolence",
+  "DivorceJudgment",
+  "EqualRemarry",
+  "Parenthood",
+  "MaternityLeave"
+)
+
+# Now you can use the shorter variable names in your R analysis
+```
+
+Feel free to replace the `...` with your actual data or calculations. If you have any specific R packages or functions you're using, make sure to incorporate them accordingly. Happy analyzing! 📊👍
+
+Source: Conversation with Bing, 20/02/2024
+(1) Converting a code from Stata to R - Statalist. https://www.statalist.org/forums/forum/general-stata-discussion/general/1642241-converting-a-code-from-stata-to-r.
+(2) GitHub - seanmcraig/stata2r: A function for translating Stata .... https://github.com/seanmcraig/stata2r.
+(3) Translating Stata code into R - Stack Overflow. https://stackoverflow.com/questions/26727381/translating-stata-code-into-r.
+(4) How to Switch Your Workflow from Stata to R, One Bit at a Time. https://fsolt.org/blog/posts/switch-to-r/.
+
+fix height and width of a ggplot
+
+ChatGPT
+ChatGPT
+In the ggplot2 package in R, you can use the ggsave() function to save a ggplot with specific dimensions. However, if you want to set the height and width directly within the ggplot object, you can use the theme() function to modify the plot dimensions.
+
+Here's an example of how you can set the height and width of a ggplot:
+
+R
+Copy code
+# Install and load ggplot2 package
+install.packages("ggplot2")
+library(ggplot2)
+
+# Create a sample ggplot
+my_plot <- ggplot(mtcars, aes(x = wt, y = mpg)) +
+  geom_point() +
+  ggtitle("Scatter Plot")
+
+# Set height and width using the theme() function
+my_plot <- my_plot + theme(
+  plot.background = element_rect(size = 2, color = "black"),
+  plot.margin = margin(1, 1, 1, 1, "cm"),
+  panel.background = element_rect(fill = "white"),
+  plot.title = element_text(hjust = 0.5),
+  # Set dimensions
+  plot.width = unit(5, "in"),
+  plot.height = unit(4, "in")
+)
+
+# Print the modified ggplot
+print(my_plot)
+In this example, plot.width and plot.height are used within the theme() function to set the width and height of the ggplot, respectively. You can adjust the values as per your requirement.
+
+Alternatively, you can use the ggsave() function to save the ggplot with specified dimensions:
+
+R
+Copy code
+ggsave("my_plot.png", plot = my_plot, width = 5, height = 4, units = "in", dpi = 300)
+This will save the ggplot as a PNG file with a width of 5 inches and a height of 4 inches. Adjust the width, height, and units parameters according to your preferences.
+User
+You
+modify your code so it fits like this # Create a sideways stacked bar plot
+ggplot(data_long, aes(x = Percentage, y = Group, fill = Category)) +
+  geom_bar(stat = "identity", position = "dodge", width = 1) +
+  scale_fill_manual(values = c("#FF9999", "#FF6666", "#FF3333", "#66B2FF", "#3366FF", "#000099"), name = "Category") +
+  labs(title = "Proportions of Employees experiencing inappropriate workplace behaviour ",
+       x = "Percentage affected ",
+       y = "Age Group") +
+  
+  theme_minimal() +
+  theme(
+    axis.text.y = element_text(angle = 0, hjust = 2),
+    legend.position = "bottom",
+    legend.direction = "vertical",
+    legend.box = "horizontal",
+    legend.margin = margin(t = 2, unit = "pt")
+
+ChatGPT
+ChatGPT
+Certainly! Here's the modified code with added width and height specifications:
+
+R
+Copy code
+# Create a sideways stacked bar plot
+ggplot(data_long, aes(x = Percentage, y = Group, fill = Category)) +
+  geom_bar(stat = "identity", position = "dodge", width = 1) +
+  scale_fill_manual(values = c("#FF9999", "#FF6666", "#FF3333", "#66B2FF", "#3366FF", "#000099"), name = "Category") +
+  labs(title = "Proportions of Employees experiencing inappropriate workplace behaviour ",
+       x = "Percentage affected ",
+       y = "Age Group") +
+  
+  theme_minimal() +
+  theme(
+    axis.text.y = element_text(angle = 0, hjust = 2),
+    legend.position = "bottom",
+    legend.direction = "vertical",
+    legend.box = "horizontal",
+    legend.margin = margin(t = 2, unit = "pt"),
+    # Set dimensions
+    plot.width = unit(8, "in"),
+    plot.height = unit(5, "in")
+  )
+In this modified code, I added the plot.width and plot.height parameters within the theme() function to set the width to 8 inches and the height to 5 inches. You can adjust these values based on your preferences.
+User
+You
+Error in `mapply()`:
+! The `plot.width` theme element is not defined in the element
+  hierarchy.
+Backtrace:
+  1. global .main()
+  2. execute(...)
+  3. rmarkdown::
+
+ChatGPT
+ChatGPT
+I apologize for the confusion. It seems there was an error in my previous response. The plot.width and plot.height are not direct parameters within the theme() function in ggplot2.
+
+To set the overall dimensions of the plot, you can use the ggsave() function after creating the ggplot object. Here's the corrected code:
+
+R
+Copy code
+# Create a sideways stacked bar plot
+my_plot <- ggplot(data_long, aes(x = Percentage, y = Group, fill = Category)) +
+  geom_bar(stat = "identity", position = "dodge", width = 1) +
+  scale_fill_manual(values = c("#FF9999", "#FF6666", "#FF3333", "#66B2FF", "#3366FF", "#000099"), name = "Category") +
+  labs(title = "Proportions of Employees experiencing inappropriate workplace behaviour ",
+       x = "Percentage affected ",
+       y = "Age Group") +
+  
+  theme_minimal() +
+  theme(
+    axis.text.y = element_text(angle = 0, hjust = 2),
+    legend.position = "bottom",
+    legend.direction = "vertical",
+    legend.box = "horizontal",
+    legend.margin = margin(t = 2, unit = "pt")
+  )
+
+# Save the plot with specified dimensions
+ggsave("my_plot.png", plot = my_plot, width = 8, height = 5, units = "in", dpi = 300)
+In this corrected code, I've created the ggplot object (my_plot) and then used ggsave() to save the plot with the specified width and height. Adjust the width and height parameters according to your preferences.
+User
+You
+something that is very legal and based on codes and not real life is called
+
+ChatGPT
+ChatGPT
+In the context of codes and programming, if something is legal and follows the rules and guidelines, it is often referred to as "compliant" or "in compliance." For example, adhering to coding standards, best practices, and software licensing agreements would be considered compliant and legal in the coding and programming realm.
+User
+You
+write concluding remarks about how applying a Canadian lens to the wbl reveal blah blah ---
+title: "The World Bank, Women, Business and the Law"
+subtitle: "The Need for better checking of Data"
+author: 
+  - Sehar Bajwa
+  - Luca Carnegie
+thanks: "Code and data are available at: https://github.com/lcarnegie/replicationpaper. "
+date: February 20, 2024
+date-format: long
+abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
+format: pdf
+number-sections: true
+bibliography: references.bib
+---
+
+```{r workspace-setup}
+#| include: false
+#| warning: false
+#| message: false
+
+library(tidyverse)
+
+## WBL Dataset Setup
+
+wb_data <- read_csv(here::here("outputs/data/wb_data_clean.csv"))
+```
+
+# Introduction
+
+Despite the many decades' worth of progress in gender equality throughout the world, one of the enduring types of gender discrimination worldwide is in the eyes of the law. Though much progress has been made in western, high-income countries, there remains vast swaths of the world where women may not vote, work, or participate in the same activities as men do, due to the presence of gendered laws. To trace the progression of economic opportunities of women in the world's 190 countries, the World Bank constructed their "Women, Business, and the Law" (WBL) dataset, which Hyland et. al make of primary interest in their paper "Gendered Laws and Women in the Workforce". In Sections 2 and 3, we analyze and replicate some of the key graphs and insights from their paper. Building on their work in Sections 4 and 5, we call into question the data collection methods of the World Bank, finding data from Statistics Canada that conflict with the data \[or whatever Sehar finds\], outlining the importance that accurate data have in being able to fully understand the complex picture of women and the law throughout the world.
+
+# Data
+
+## Source {#sec-data}
+
+Hyland et al.'s original paper primarily makes use of the 'Women, Business, and the Law' dataset (WBL) from the World Bank, along with some others to help compare and contextualize the data. In our replication, however, we will be focusing on aspects of this dataset only.
+
+## Methodology {#subsec2-data}
+
+`R` [@citeR] and it's `tidyverse` [@tidyverse] and `dplyr` [@dplyr] packages were primarily used when analysing the WBL dataset. Like Hyland, this WBL dataset will be of primary focus in our reproduction. Other datasets that informed the original paper and were cross-references, such as Wage Gap data from the International Labour Organization and the OECD (Organization for Economic Cooperation and Development), and World Development Indicators data are not relevant to the areas that will be developed upon, and so irrelevant to the subsequent analysis. For the secondary part of this analysis, Surveys conducted by Statistics Canada will be utilised.
+
+## Features {#subsec1-data}
+
+The Women, Business, and the Law dataset is organized across thirty-five aspects of the law, which are scored across eight indicators of four or five binary questions. Each indicator represents a different phase of a woman’s career: Mobility, Workplace, Pay, Marriage, Parenthood, Entrepreneurship, Assets, and Pension. Answers to the binary questions were sourced, pro-bono, from respondents with expertise in laws on family, labor and violence against women. It not clear where in their countries' legal systems the respondents were when they were polled. The indicators are as follows:
+
+• Mobility: Examines constraints on women’s freedom of movement.\
+• Workplace: Analyzes laws affecting a woman’s decision to work.\
+• Pay: Measures laws and regulations affecting a woman’s pay.\
+• Marriage: Assesses constraints related to marriage\
+• Parenthood: Examines laws that affect women’s work after having children.\
+• Entrepreneurship: Assesses constraints to women starting and running a business.\
+• Assets: covers property ownership rights, inheritance rights (both for children and surviving spouses), authority of assets during marriage, and valuation of non-monetary contributions.\
+• Pension: captures the equalization of retirement ages (with full and partial benefits as well as the mandatory retirement age) and whether periods of absence from employment due to childcare are accounted for in pension benefits.
+
+Indicator-level scores are obtained by calculating the unweighted average of the questions within that indicator and scaling the result to 100. Overall scores are then calculated by taking the average of each indicator, with 100 representing the highest possible score. Each binary question either contributes 20 or 25 points, depending on the indicator. The indicators and index mainly capture the effect labour laws have on the employment outcomes of women in the labour force. It does not take into account laws affecting their acquisition of human capital (e.g. required education laws) nor laws affecting reproductive rights, for instance, which Hyland et al. point to as an issue but concede would be difficult to quantify easily. The World Bank's methodology was designed as an easily replicable measure of the legal environment for women as entrepreneurs and employees, which, for a dataset of it's size and breadth, is comprehensive. In their paper, they then use the dataset to present 'stylized facts' which either unearth new facts about gendered laws or are quantifications of what they write were previously known qualitatively. Figures 1A, 1B, and 2 int the following sections were replicated from the original paper.
+
+## Key Results 
+
+```{r hyland-fig-1A}
+#| message: false
+#| echo: false
+#| warning: false
+#| fig-cap: Figure 1A from Hyland et al. 
+#| fig-align: center
+
+## Replication of Figure 1A: Avg. WBL Index in 2019
+
+
+# average out the index across regions
+region_avg_index <- wb_data |> group_by(Region) |> filter(`WBL Report Year` == 2019) |>
+                    summarise(avg_index = mean(`WBL_index`, na.rm = TRUE), .groups = "drop")
+
+
+# Plot in ggplot2
+
+  ggplot(data = region_avg_index, mapping = aes(x = Region, y = avg_index)) +
+  geom_col() +
+  labs(title="Average WBL Index by World Region, 2019", x="Region", y="WBL Index") +
+  theme_minimal() +
+  ylim (NA, 100) +
+  theme(plot.title.position = "plot",
+        plot.title = element_text(hjust = 0.5), 
+        axis.text.x = element_text (angle = 45, vjust = 1, hjust=1))
+
+```
+
+Figure 1A shows the average unweighted aggregate WBL index score in 2019, compared across regions. It shows notable differences between higher-income countries and the rest of the world, most notably between higher income countries and countries in the Middle East and North Africa - there is a almost 25 index-point difference between them. In the context of this dataset, it indicates that women in high-income countries enjoy about 36 percent more legal rights related to employment than those in the Middle East and North Africa.
+
+```{r hyland-fig-1B}
+#| message: false
+#| echo: false
+#| warning: false
+#| fig-cap: Figure 1B from Hyland et al. 
+#| fig-align: center
+
+## Replication of Figure 1A: Avg. WBL Index in 2019
+
+
+# average out the index across regions
+region_avg_index <- wb_data |> group_by(Region) |> filter(`WBL Report Year` == 2019) |>
+                    summarise(avg_index = mean(`WBL_index`, na.rm = TRUE), .groups = "drop")
+
+
+# Plot in ggplot2
+
+  ggplot(data = region_avg_index, mapping = aes(x = Region, y = avg_index)) +
+  geom_col() +
+  labs(title="Average WBL Index by World Region, 2019", x="Region", y="WBL Index") +
+  theme_minimal() +
+  ylim (NA, 100) +
+  theme(plot.title.position = "plot",
+        plot.title = element_text(hjust = 0.5), 
+        axis.text.x = element_text (angle = 45, vjust = 1, hjust=1))
+
+```
+
+Figure 1B breaks down aggregate index for 2019 into it's constituent indicators and shows the global average score for each indicator. As Hyland et al pointed out, the 'Parenthood' Indicator was the lowest overall, meaning that globally, women generally enjoy fewer legal rights in employment after they have had children than before.
+
+```{r hyland-fig-2}
+#| message: false
+#| echo: false
+#| warning: false
+#| fig-cap: Figure 2 from Hyland et al. 
+#| fig-align: center
+
+## Replication of Figure 2:  Charting the Progress of Legal Gender Equality over Time
+  
+
+#construct tibble of yearly averages of regions.   
+regional_avgs_byyear <- wb_data |> select(
+                            `WBL Report Year`, 
+                            Region, 
+                            WBL_index
+                        ) |> group_by(Region, `WBL Report Year`) |> 
+                             summarise(avg_index = mean(`WBL_index`, na.rm = TRUE), .groups = "drop")
+
+# Sling into ggplot2
+
+regional_avgs_byyear |> 
+  ggplot(aes(x=`WBL Report Year`, y=avg_index, group=Region, color=Region)) +
+  geom_line() +
+  labs(title="WBL Index Progression since 1971, by Region", x="Year", y="WBL Index") +
+  scale_color_manual(values=c("red", "blue", "green", "orange", "purple", "turquoise", "black"), labels=c("East Asia/Pacific","Europe/Central Asia", "High Income Countries (OECD)", "Latin America/Caribbean", "Middle East/North Africa", "South Asia", "Sub-Saharan Africa")) +
+  theme_minimal() +
+  ylim (NA, 100) + 
+  theme(plot.title.position = "plot",
+        plot.title = element_text(hjust = 0.5))
+
+```
+
+Figure 2 shows the progression of the aggregate WBL index over time, broken down by region. As expected, high-income countries dominate in index score, but interestingly Latin American women enjoyed more rights than even European/Central Asian women between 1995-2000. Employment rights for women in Sub-Saharan Africa have also seen the most growth since tracking began in 1971.
+
+
+# A focus on Canada
+
+In the subsequent section of this paper, our attention will be directed towards a comprehensive cross-referencing analysis, juxtaposing Canada's standing in the World Bank's Women, Business, and the Law (WBL) index across all eight indicators with research data sourced from Statistics Canada. This approach aims to delve deeper into the nuances of Canada's performance in the realm of gender-related legal frameworks and business regulations, providing a nuanced perspective that goes beyond the surface-level rankings.
+
+By synthesizing the insights derived from the WBL indicators with the robust statistical data from Statistics Canada, we seek to gain a more thorough understanding of the effectiveness and practical implications of Canada's policies and regulations pertaining to women in the business sector. This integrated examination will contribute to a more comprehensive and nuanced evaluation, shedding light on potential areas of alignment or incongruence between the World Bank's assessment and the empirical data provided by Statistics Canada. Through this interdisciplinary approach, we aim to offer a more holistic and informed analysis of the Canadian landscape in terms of gender inclusivity within the legal and business domains.
+
+## Canada in the WBL
+
+OECD Countries fare particularly well in the WBL Rankings, as evidenced in the graphs in the former sections, with the highest average WBL Indexes and Index Progressions. As a High Income OECD Country, Canada fares particularly well in the WBL Database, scoring 100 across all 8 indicators over the past decade. Cross-referencing the updated database with the one used in the paper reveals the same scores till 2023 as well, revealing that not much has changed post the COVID 19 Pandemic.
+
+Every indicator within the study is supported by a 'legal basis' as outlined in the original WBL Database, providing a foundation to substantiate the assigned marks for each question. It is essential to note that in the datasheet utilized by Hyland et al, the legal columns were omitted. However, for the purpose of our subsequent analysis, we deem it imperative to reference the official database's legal columns. This is crucial as they not only serve to validate our findings but also contribute valuable insights that may be overlooked when solely relying on the abbreviated dataset used by Hyland et al.
+
+### Pay
+
+       
+The first indicator to be scrutinized is Pay, particularly the question that focuses on equal remuneration regardless of gender. Notably, the legal backing for an indicator representative of Canada is one that references only one province, Ontario. Nevertheless, this section will utilize the LFS Survey from Statistics Canada to evaluate if Canada’s perfect rating doesn’t hold up solely on paper.  
+```{r canada-tbl-1}
+#| message: false
+#| echo: false
+#| warning: false
+#| fig-align: center
+library(kableExtra)
+
+# Create a data frame for the table
+pay <- data.frame(
+  Indicator = "Pay",
+  Score = 100,
+  Question = "“Does the law mandate equal remuneration for work of equal value?”",
+  Legal_Basis = "Ontario Pay Equity Act, Sec. 6",
+  Citation = "For the purposes of this Act, pay equity is achieved under the job-to-job method of comparison when the job rate for the female job class that is the subject of the comparison is at least equal to the job rate for a male job class in the same establishment where the work performed in the two job classes is of equal or comparable value.",
+  Article = "The gender wage gap in Canada: 1998 to 2018 Labour Statistics: Research Papers by Rachelle Pelletier, Martha Patterson and Melissa Moyser",
+  Stylized_fact = "Women still earn 87 cents for every dollar a man earns in Canada",
+  Link = "[Read more](https://www150.statcan.gc.ca/n1/en/pub/75-004-m/75-004-m2019004-eng.pdf?st=szPFyv6s)",
+  Database = "Annualized data from the Labour Force Survey (LFS), a monthly household survey conducted by Statistics Canada.",
+  Additional = "56,000 households, no aboriginal settlements or full-time Canadian Armed Force members, remote households in low population density areas"
+)
+
+# Transpose the data frame
+pay <- t(pay)
+
+# Replace underscores with spaces in column names
+colnames(pay) <- gsub("_", " ", colnames(pay))
+
+# Create a table using kableExtra
+  kable(pay, format = "latex", caption = "Summary of findings -Pay Indicator") %>%
+  column_spec(2, width = "29em")
+```
+       
+
+The LFS survey reveals that in 2018, female employees aged 25 to 34 earned 4.13 dollars less per hour compared to their male counterparts, equaling 87 cents on the dollar. In the decade between 1988 and 2018, the gap has reduced by merely \$1.04. Given that women in Canada are now better educated on average than men, acquiring bachelor’s degrees at a faster pace, and have diversified their fields of study, particularly in STEM, the persistence of this gap warrants a closer look.
+
+     
+The authors used a Blinder Oaxaca Decomposition to quantify how much of the wage difference can be explained by control factors. Some of these factors included level of education, job tenure, union coverage, and demographics. The results show that even after controlling for the above factors, roughly two-thirds of the wage gap is unexplained, and the difference is statistically significant at a 95% confidence interval.
+
+     
+The table below reproduces the gender wage gap- Oaxaca decomposition data from the Labour Statistics report. As is visible, only an additional 7% of this gap has become explicable in the years that have followed since 1988, largely due to unionization reducing men's wages, and women entering new industries. Despite extensive research, the gender wage gap remains an unsolved mystery in Canada.
+
+        
+```{r canada-tbl-2}
+#| message: false
+#| echo: false
+#| warning: false
+#| fig-align: center
+library(kableExtra)
+
+# Create a data frame for the table
+wagegap <- data.frame(
+  Category = c("Total explained portion (sum of effects of variables below)", "Human capital", "Education", 
+               "Job tenure", "Job attributes", "Part-time", "Public sector", "Union", "Firm size", 
+               "Occupation and industry", "Occupation", "Industry", "Demographics", "Age", 
+               "Province", "Children", "Marital status", "Total unexplained portion"),
+  '1998' = c(28.0, 1.8, -0.5, 2.3, 10.1, 8.9, -0.6, 0.7, 1.1, 18.3, 1.8, 16.5, -2.2, -0.4, -0.1, -0.3, -1.4, 72.0),
+  '2018' = c(36.6, -6.1, -4.8, -1.3, -0.7, 9.2, -5.3, -3.4, -1.1, 44.8, 5.1, 39.7, -1.6, -0.3, 1.0, -0.8, -1.5, 63.4)
+)
+
+colnames(wagegap) <- c("Category", "1998", "2018")
+
+# Replace special characters in column names
+#colnames(wagegap) <- gsub("`", "", colnames(wagegap))
+
+# Create a table using kableExtra
+kable(wagegap, format = "latex", booktabs = TRUE, escape = FALSE, caption = "Explanation of the Gender Wage Gap, 1998 to 2018") %>%
+ kable_styling() %>%
+#  add_header_above(c("Category" = 1, "1998" = 1, "2018" = 1)) %>%
+  
+  row_spec(18, bold = TRUE)
+
+```
+
+### Workplace {#sec-point2}
+
+The next indicator under scrutiny is the Workplace, with a specific focus on legislation addressing sexual harassment. While legal support is evident in various codes within this category, it is essential to emphasize that the mere existence of legal provisions does not guarantee their effective implementation. The following analysis then, acknowledges the potential disparity between legal frameworks and their real-world impact on preventing and addressing sexual harassment in the workplace.
+
+```{r canada-tbl-3}
+#| message: false
+#| echo: false
+#| warning: false
+#| fig-align: center
+library(kableExtra)
+
+# Create a data frame for the table
+workplace <- data.frame(
+  Indicator = "Workplace",
+  Score = 100,
+  Question = "“Is there legislation on sexual harassment in employment?”",
+  Legal_Basis = "Canadian Human Rights Act, Sec. 14(1) and (2)",
+  Citation = "It is a discriminatory practice,in matters related to employment,to harass an individual on a prohibited ground of discrimination.",
+  Article = "Gender Results Framework: A new data table on workplace harassment",
+  Stylized_fact = "Women still earn 87 cents for every dollar a man earns in Canada",
+  Link = "[Read more](https://www150.statcan.gc.ca/n1/daily-quotidien/240212/dq240212a-eng.htm)",
+  Database = "Data from 2020 Survey on Sexual Misconduct at Work (SSMW) and Gender Results Framework."
+)
+
+# Transpose the data frame
+workplace <- t(workplace)
+
+# Replace underscores with spaces in column names
+colnames(workplace) <- gsub("_", " ", colnames(workplace))
+# Create a table using kableExtra
+  kable(workplace, format = "latex", caption = "Summary of findings -Workplace Indicator") %>%
+    
+  column_spec(2, width = "29em")
+```
+
+Utilizing data from Statistics Canada's Centre for Gender, Diversity, and Inclusion Statistics, in collaboration with the Canadian Centre for Justice and Community Safety Statistics, we analyze a recently released data table on workplace harassment and sexual assault experiences. The table reports on the Gender Results Framework (GRF), initiated by the Government of Canada in 2018 to monitor gender equality progress. Additionally, the data incorporates insights gathered from the 2020 Survey on Sexual Misconduct at Work (SSMW).
+
+The reproduced table from the 2020 Survey on Sexual Misconduct at Work outlines the proportions of employees reporting inappropriate sexualized behavior, discriminatory behavior, and sexual assault in their work environments. Notably, the data highlights the heightened vulnerability of individuals in the 25 to 34 age group, where 57% of females report experiencing sexualized behaviors. Within this age group, women are twice as likely as men to face discrimination and three times as likely to experience sexual assault.
+
+```{r canada-fig-1}
+#| message: false
+#| echo: false
+#| warning: false
+#| fig-align: center
+
+# Install and load necessary packages if not already installed
+ # install.packages("tidyverse")
+
+# Load the necessary libraries
+library(tidyverse)
+
+#  provided data
+data <- read.table(text = '"Group" "M - inappropriate sexualized behaviours" "M - Discrimination" "M - SA" "F - inappropriate sexualized behaviours" "F - Discrimination" "F - SA"
+"Total, all people" 29 9 3 44 20 13
+"Age 15 to 24" 27 12 0 48 25 7
+"Age 25 to 34" 37 13 5 57 27 16
+"Age 35 to 44" 34 11 3 41 20 12
+"Age 45 to 54" 28 8 3 42 18 12
+"Age 55 and older" 24 6 2 39 16 15', header = TRUE)
+
+# Transform the data into long format for ggplot
+data_long <- data %>%
+  pivot_longer(cols = -Group, names_to = "Category", values_to = "Percentage")
+
+# Create a sideways stacked bar plot
+ggplot(data_long, aes(x = Percentage, y = Group, fill = Category)) +
+  geom_bar(stat = "identity", position = "dodge", width = 1) +
+  scale_fill_manual(values = c("#FF9999", "#FF6666", "#FF3333", "#66B2FF", "#3366FF", "#000099"), name = "Category") +
+  labs(title = "Inappropriate workplace behaviour ",
+       x = "Percentage affected ",
+       y = "Age Group") +
+  
+  theme_minimal() +
+  theme(
+ #   axis.text.y = element_text(angle = 0, hjust = 2),
+    legend.position = "bottom",
+    legend.direction = "vertical",
+    legend.box = "horizontal",
+)
+
+```
+
+Further analysis of Canadian data reveals that nearly half of women, at 47%, report experiencing some form of harassment or sexual assault in the workplace. The Gender Results Framework (GRF), a key tool for monitoring gender equality in Canada, indicates that women are twice as likely as men to encounter unwanted sexual behaviors in a work environment. Beyond the workplace, Statistics Canada notes that women are three times more likely to experience unwanted sexual behaviors in public, four times more likely to have been sexually assaulted since age 15, and twice as likely to suffer negative emotional consequences from such experiences compared to men. These findings underscore the pervasive nature of gender-based harassment and assault, both within and outside professional settings in Canada, which are far from a pristine perfect ‘100'.
+
+### Parenthood
+
+```{r canada-tbl-4}
+#| message: false
+#| echo: false
+#| warning: false
+#| fig-align: center
+library(kableExtra)
+
+# Create a data frame for the table
+maternal <- data.frame(
+  Indicator = "Parenthood",
+  Score = 100,
+  Question = "“Is there paid parental leave?”",
+  Legal_Basis = "Employment Insurance Act, Art. 12(4); Employment Insurance Act, Secs. 12(4.01) and 23",
+  Citation = "The maximum number of weeks for which benefits may be paid for a single pregnancy is 15",
+  Article = "2021 MATERNITY LEAVE EXPERIENCE REPORT, Moms At Work",
+  Stylized_fact = "One in every 3 mothers returning to the workplace experienced discrimination",
+  Link = "[Read more](https://thisismomsatwork.com/wp-content/uploads/edd/2021/05/2021-Maternity-Leave-Experience-Report-Moms-at-Work-1.pdf)",
+  Database = "Data from 2021 survey of 1090 mothers who had taken maternity leave in the last 10 years."
+)
+
+# Transpose the data frame
+maternal <- t(maternal)
+
+# Replace underscores with spaces in column names
+colnames(maternal) <- gsub("_", " ", colnames(maternal))
+# Create a table using kableExtra
+  kable(maternal, format = "latex", caption = "Summary of findings -Parenthood Indicator") %>%
+    
+  column_spec(2, width = "29em")
+```
+
+This last indicator examines the challenges faced by new mothers returning to the workplace. Canada has legal provisions to ensure that maternal leave comes with benefits, and national statistics indicate that a substantial majority, 85.4% of new mothers with insurable employment, received maternity or parental benefits in 2018 according to the Employment Insurance Coverage Survey. However, it is crucial to consider the practical implementation of these laws, as their existence doesn't guarantee enforcement. A survey conducted among 1090 mothers who took maternity leave between 2011 and 2021 reveals that one in three women encountered discrimination upon their return to the workplace. This discrimination manifested in various forms, including the following:\
+• Poor treatment and derogatory comments\
+• Denied opportunities to develop professionally (projects, training, responsibility)\
+• Laid off, restructured or demoted\
+• Denied promotion, new role or advancement of earnings\
+• Inadequate or denial of accommodations.
+
+Furthermore, a striking 95% of the surveyed women did not receive any formal support during their maternity leave transition. Notably, 40% seriously contemplated resigning during the return-to-work process.
+
+# Discussion
+
+## Concluding remarks
+
+In conclusion, the Canadian lens applied to the WBL Database provide a 
+
+
+## Rigged data and the World Bank
+
+
+## Future research
+
+
+\newpage
+
+# References
+
+::: {#refs}
+
+\newpage
+
+\appendix
+
+# Appendix {.unnumbered}
+
+ChatGPT
+ChatGPT
+r
+Copy code
+## Concluding remarks
+
+In conclusion, the Canadian lens applied to the WBL Database provides a nuanced perspective on the state of gender-related legal frameworks and business regulations. While the World Bank's Women, Business, and the Law (WBL) index assigns Canada a perfect score across all eight indicators, our analysis using Statistics Canada data reveals a more complex reality.
+
+The examination of the Pay indicator exposes the persistent gender wage gap in Canada, with women earning 87 cents for every dollar earned by men. Despite legal provisions mandating equal remuneration for work of equal value, the unexplained portion of the wage gap remains substantial, emphasizing the need for continued efforts to address this issue.
+
+In the Workplace indicator, we juxtapose the legal provisions on sexual harassment with real-world experiences reported in the 2020 Survey on Sexual Misconduct at Work. The data exposes the prevalence of inappropriate sexualized behaviors, discriminatory behavior, and sexual assault in Canadian workplaces. These findings underscore the importance of not only having legal frameworks but also ensuring their effective implementation to create safe and inclusive work environments.
+
+The Parenthood indicator, focusing on paid parental leave, reveals legal provisions in Canada, yet practical challenges persist. Discrimination against mothers returning to the workplace remains a significant issue, with one in three mothers experiencing various forms of mistreatment. The lack of formal support during the maternity leave transition further highlights the need for comprehensive policies and workplace cultures that support working mothers.
+
+While the World Bank's WBL index provides a valuable snapshot of legal frameworks, our analysis emphasizes the importance of complementing such indices with empirical data to gain a more holistic understanding. Future research should explore the intersections of legal provisions, their implementation, and their impact on the lived experiences of individuals, especially concerning gender equality in the workplace.
+
+## Rigged data and the World Bank
+
+Our examination raises questions about the reliability and comprehensiveness of the World Bank's WBL database. The divergence between the perfect scores assigned to Canada and the challenges revealed by Statistics Canada data prompts a critical reevaluation of the data collection methods and indicators used by the World Bank. It highlights the importance of transparency in data reporting and the need for continuous refinement of methodologies to ensure accurate and meaningful assessments.
+
+## Future research
+
+Future research in this domain should focus on refining indicators and methodologies used to assess gender-related legal frameworks. Additionally, exploring the impact of cultural and societal factors on the implementation of laws and their effectiveness in promoting gender equality is essential. Comparative studies across countries with similar legal frameworks but different outcomes can provide valuable insights into the factors influencing gender equality in various contexts.
+
+::: {#refs}
+
+\newpage
+
+\appendix
+
+# Appendix {.unnumbered}
+This is a generic template for concluding remarks, addressing the key findings, questioning the reliability of data, and suggesting directions for future research. Feel free to customize it further based on the specific nuances and insights from your analysis.
+User
+You
+PASTE AS TEXT NOT CODE
+
+ChatGPT
+ChatGPT
+Concluding remarks
+
+In conclusion, the Canadian lens applied to the WBL Database provides a nuanced perspective on the state of gender-related legal frameworks and business regulations. While the World Bank's Women, Business, and the Law (WBL) index assigns Canada a perfect score across all eight indicators, our analysis using Statistics Canada data reveals a more complex reality.
+
+The examination of the Pay indicator exposes the persistent gender wage gap in Canada, with women earning 87 cents for every dollar earned by men. Despite legal provisions mandating equal remuneration for work of equal value, the unexplained portion of the wage gap remains substantial, emphasizing the need for continued efforts to address this issue.
+
+In the Workplace indicator, we juxtapose the legal provisions on sexual harassment with real-world experiences reported in the 2020 Survey on Sexual Misconduct at Work. The data exposes the prevalence of inappropriate sexualized behaviors, discriminatory behavior, and sexual assault in Canadian workplaces. These findings underscore the importance of not only having legal frameworks but also ensuring their effective implementation to create safe and inclusive work environments.
+
+The Parenthood indicator, focusing on paid parental leave, reveals legal provisions in Canada, yet practical challenges persist. Discrimination against mothers returning to the workplace remains a significant issue, with one in three mothers experiencing various forms of mistreatment. The lack of formal support during the maternity leave transition further highlights the need for comprehensive policies and workplace cultures that support working mothers.
+
+While the World Bank's WBL index provides a valuable snapshot of legal frameworks, our analysis emphasizes the importance of complementing such indices with empirical data to gain a more holistic understanding. Future research should explore the intersections of legal provisions, their implementation, and their impact on the lived experiences of individuals, especially concerning gender equality in the workplace.
+
+Rigged data and the World Bank
+
+Our examination raises questions about the reliability and comprehensiveness of the World Bank's WBL database. The divergence between the perfect scores assigned to Canada and the challenges revealed by Statistics Canada data prompts a critical reevaluation of the data collection methods and indicators used by the World Bank. It highlights the importance of transparency in data reporting and the need for continuous refinement of methodologies to ensure accurate and meaningful assessments.
+
+Future research
+
+Future research in this domain should focus on refining indicators and methodologies used to assess gender-related legal frameworks. Additionally, exploring the impact of cultural and societal factors on the implementation of laws and their effectiveness in promoting gender equality is essential. Comparative studies across countries with similar legal frameworks but different outcomes can provide valuable insights into the factors influencing gender equality in various contexts.
+User
+You
+what does this paragraph  relevant to the paper that has been written above An inquiry into the manipulation of an annual World Bank report revealed in 2021 that Kristalina Georgieva, the former Chief Executive of the bank and current head of the International Monetary Fund, instructed staff to modify data to appease China. The investigation, conducted by the law firm WilmerHale at the request of the bank’s ethics committee,  raised concerns about Georgieva's judgment during her tenure at the World Bank.
+
+In light of these revelations, Luiz Vieira, coordinator of the London-based Bretton Woods Project, a nonprofit watchdog group said:
+"It highlights the degree to which the World Bank and the IMF can really be trusted to provide advice based on solid research. It raises questions about whose interests are being served, how robust is their analysis, and how subject to geopolitical and shareholder pressure are they?" 
+
+ChatGPT
+ChatGPT
+The paragraph about the manipulation of the annual World Bank report, particularly involving Kristalina Georgieva, is relevant to the paper in several ways:
+
+Credibility of World Bank Data: The paper extensively relies on data from the World Bank's Women, Business, and the Law (WBL) database to analyze gender-related legal frameworks. The revelation of data manipulation within the World Bank raises concerns about the credibility of the data used in the WBL database. This prompts a critical examination of the reliability of the information on which the analysis is based.
+Transparency and Ethics: The investigation into data manipulation, conducted by the law firm WilmerHale, raises questions about the transparency and ethical standards within the World Bank. This is crucial as the paper relies on the assumption that the data provided by the World Bank is accurate and unbiased. The revelations about instructions to modify data may prompt a reconsideration of the ethical foundations of the data used in the analysis.
+Impact on Analysis and Conclusions: If the data manipulation allegations prove to be true, it could potentially impact the accuracy of the findings and conclusions drawn from the World Bank's WBL database. It calls into question the integrity of the information used for assessing gender-related legal frameworks in various countries, including Canada.
+Broader Implications: The statement by Luiz Vieira from the Bretton Woods Project underscores the broader implications of such data manipulation. It raises concerns about the trustworthiness of advice and analysis provided by international financial institutions like the World Bank and the International Monetary Fund (IMF). This broader context is relevant to the paper as it encourages a critical examination of the institutional frameworks shaping global gender equality assessments.
+In summary, the revelation of data manipulation within the World Bank adds a layer of complexity to the paper's reliance on the WBL database. It prompts a thoughtful consideration of the potential impact on the credibility of the data and the broader implications for the analysis and conclusions presented in the paper.
+User
+You
+make this a 2 3 sentence thing
+
+ChatGPT
+ChatGPT
+The revelation of manipulation in an annual World Bank report in 2021, under the leadership of Kristalina Georgieva, former Chief Executive and current head of the International Monetary Fund, raised concerns about data integrity and judgment. The inquiry, prompted by Georgieva's alleged instruction to modify data to appease China, underscores questions about the reliability of institutions like the World Bank and the IMF in providing impartial and research-based advice. Luiz Vieira of the Bretton Woods Project highlights the potential impact of geopolitical pressures on the organizations' analyses and whose interests may be prioritized.
+User
+You
+no 2 3 sentences abt the implication for the paper
+
+ChatGPT
+ChatGPT
+The manipulation of data in an annual World Bank report, as revealed in 2021, raises critical questions about the reliability of global datasets, including those related to gender equality. The incident highlights concerns about potential biases and influences on data reporting, emphasizing the need for rigorous scrutiny and validation of information sources in research, especially when assessing gender-related legal frameworks.
+User
+You
+how to cross reference a figure in R
+
+ChatGPT
+ChatGPT
+To cross-reference a figure in R Markdown, you can use the knitr package along with the chunk label for the code that generates the figure. Here are the steps to cross-reference a figure in R Markdown:
+
+Generate a Figure with a Chunk Label:
+When creating a figure using ggplot2 or any other plotting library, add a label to the chunk using the fig.cap option. This label will be used for cross-referencing.
+{r
+Copy code
+# Your plotting code here
+Replace "my-plot" with a unique label for your figure, and adjust the plotting code accordingly.
+Reference the Figure:
+To reference the figure, use the (\#label) syntax, where "label" is the label you assigned to the figure chunk. For example:
+"As shown in Figure @ref(fig:my-plot), the plot illustrates..."
+Replace "my-plot" with your actual chunk label.
+Render the Document:
+When rendering your R Markdown document, ensure that you are using the knitr package to process the code chunks and generate the figures.
+{r,
+Copy code
+library(knitr)
+knit("your_document.Rmd")
+Replace "your_document.Rmd" with the actual filename of your R Markdown document.
+By following these steps, you can cross-reference figures in your R Markdown document. Remember to adjust the chunk labels and references accordingly based on your document's structure.
+User
+You
+use this format for a 4 sentence abstract to write an abstract for the paper above:     abstract: "Immigration and asylum-seeking are common topics of discussion in our globalized world, about which many Westerners hold opinions due to certain personal justifications. This paper replicates data analysis of the perceptions of non-immigrant German males towards refugees in municipalities where males overpopulate females. We apply secondary research regarding Canadian rates of immigration and gender imbalances in Alberta and raise concerns regarding the possibly generalizable nature of the findings in Germany. As this issue specifically affects minority groups experiencing prejudice, we place great emphasis on the weight of this discussion and call for future investigations of this field to inform policies and initiatives to address racism and hate crimes."
+
+ChatGPT
+ChatGPT
+abstract: "Gender-based legal frameworks and workplace conditions are crucial considerations in the pursuit of global gender equality. This paper replicates and extends the data analysis conducted by Hyland et al. on the World Bank's 'Women, Business, and the Law' dataset, focusing on Canada's standing. By cross-referencing the World Bank's indicators with Statistics Canada's data, we delve into the nuanced realities of gender-related legal frameworks and business regulations. The revelations from this cross-sectional analysis, considering Canada's performance, underscore the need for a comprehensive and informed approach in evaluating gender inclusivity within legal and business domains. The findings contribute to ongoing discussions on gender equality and advocate for continued research to inform evidence-based policies combating discrimination and fostering inclusivity."
+User
+You
+rewrite a catching subtitle How Canada's working women really fare on ground
+
+ChatGPT
+ChatGPT
+"Unveiling the Realities: Navigating the Terrain of Working Women in Canada"
+User
+You
+5 more ideas, not with colons, 5 word sentences
+
+ChatGPT
+ChatGPT
+"Canada's Working Women: Unveiled Insights"
+"Ground Truths: Women at Work"
+"Work Realities for Canadian Women"
+"In the Trenches: Canadian Workplace"
+"Navigating Canadian Work Realities"
+User
+You
+rewrite How Canada's working women really fare in the Business Worl
+
+ChatGPT
+ChatGPT
+"Exploring the Realities of Canadian Women in the Business World"
+User
+You
+6 more ideas
+
+ChatGPT
+ChatGPT
+"Canadian Women: Business Landscape Insights"
+"The Business Realities for Canadian Women"
+"Canadian Working Women: Business Frontiers"
+"Unveiling Canada's Business Realities for Women"
+"Navigating the Business Landscape: Canadian Women"
+"In the Business Arena: Canadian Women's Journey"
+User
+You
+why the fyck don't u write full sentences remove the damn colon in the middle
+
+ChatGPT
+ChatGPT
+"Unveiling the Realities of Canadian Working Women in the Business World"
+"Exploring the Business Realities for Canadian Women"
+"Canadian Women in the Business World: Unveiling Truths"
+"Navigating the Business Landscape for Canadian Working Women"
+"Understanding Canadian Women in Business Realities"
+"Insights into the Business Realities for Canadian Women"
+User
+You
+what is an estimand in statisrtics
+
+ChatGPT
+ChatGPT
+In statistics, an estimand is a formal way of specifying the target of estimation in a statistical analysis. It represents the quantity or effect that a researcher aims to estimate from a study or experiment. The term "estimand" is commonly used in the context of causal inference and randomized controlled trials, where researchers want to estimate the causal effect of a treatment or intervention.
+
+An estimand is defined before data collection and analysis and is crucial for ensuring that the research question is well-formulated. It helps to clarify what exactly is being measured or estimated and provides a clear framework for statistical analysis. The concept of estimands has gained prominence in recent years as statisticians and researchers emphasize the importance of transparently specifying the target of estimation in study designs and statistical analyses.
+User
+You
+what would be the estimand of the paper above
+
+ChatGPT
+ChatGPT
+In the paper above, the estimands would depend on the specific research questions and objectives outlined in the study. Each analysis or investigation presented in the paper may have its own estimand, representing the target of estimation for that particular aspect of the research. For example:
+
+Average WBL Index by World Region, 2019 (Figure 1A):
+Estimand: The average Women, Business, and the Law (WBL) Index score by world region in the year 2019.
+Average WBL Index by World Region, 2019 (Figure 1B):
+Estimand: The average WBL Index score for each constituent indicator by world region in 2019.
+Charting the Progress of Legal Gender Equality over Time (Figure 2):
+Estimand: The progression of the aggregate WBL Index over time, broken down by region.
+Pay Indicator for Canada:
+Estimand: The extent to which pay equality is mandated by law in Canada, specifically focusing on the legal basis in the Ontario Pay Equity Act.
+Workplace Indicator for Canada:
+Estimand: The existence and effectiveness of legislation addressing sexual harassment in employment in Canada, as outlined in the Canadian Human Rights Act.
+Parenthood Indicator for Canada:
+Estimand: The presence and impact of paid parental leave in Canada, as per the Employment Insurance Act.
+The estimands would need to be explicitly defined in the paper, guiding the statistical analyses and interpretations of the results. Each research question or hypothesis addressed in the paper corresponds to a specific estimand related to the topic under investigation.
+User
+You
+adjust to add data labels 
+  ggplot(data = region_avg_index, mapping = aes(x = Region, y = avg_index)) +
+  geom_col() +
+  labs(title="Average WBL Index by World Region, 2019", x="Region", y="WBL Index") +
+  theme_minimal() +
+  ylim (NA, 100) +
+  theme(plot.title.position = "plot",
+        plot.title = element_text(hjust = 0.5), 
+        axis.text.x = element_text (angle = 45, vjust = 1, hjust=1))
+
+ChatGPT
+ChatGPT
+To add data labels to your bar plot in ggplot, you can use the geom_text function. Here's the adjusted code:
+
+R
+Copy code
+ggplot(data = region_avg_index, aes(x = Region, y = avg_index)) +
+  geom_col() +
+  geom_text(aes(label = sprintf("%.2f", avg_index)), vjust = -0.5, color = "black") +  # Add this line for data labels
+  labs(title="Average WBL Index by World Region, 2019", x="Region", y="WBL Index") +
+  theme_minimal() +
+  ylim(NA, 100) +
+  theme(plot.title.position = "plot",
+        plot.title = element_text(hjust = 0.5), 
+        axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))
+This modification includes the geom_text layer, which adds data labels to each bar. The sprintf("%.2f", avg_index) formats the label to display two decimal places. Adjust the vjust parameter to control the vertical positioning of the labels, and you can customize the color with the color parameter.
+User
+You
+this graph is currently showing average indicators by country, modify this code so it shows the average of each indicator and x axis is indicator and y axis is score 
+# average out the index across regions
+region_avg_index <- wb_data |> group_by(Region) |> filter(`WBL Report Year` == 2019) |>
+                    summarise(avg_index = mean(`WBL_index`, na.rm = TRUE), .groups = "drop")
+
+
+# Plot in ggplot2
+
+  ggplot(data = region_avg_index, mapping = aes(x = Region, y = avg_index)) +
+  geom_col() +
+      geom_text(aes(label = sprintf("%.2f", avg_index)), vjust = -0.5, color = "black") +  # Add this line for data labels
+
+  labs(title="Average WBL Index by World Region, 2019", x="Region", y="WBL Index") +
+  theme_minimal() +
+  ylim (NA, 100) +
+  theme(plot.title.position = "plot",
+        plot.title = element_text(hjust = 0.5), 
+        axis.text.x = element_text (angle = 45, vjust = 1, hjust=1))
+
+ChatGPT
+ChatGPT
+If you want to show the average score for each indicator, and have the x-axis represent the indicators, you should group by the indicator instead of the region. Here's the modified code:
+
+R
+Copy code
+# Average out the index across indicators
+indicator_avg_index <- wb_data %>%
+  filter(`WBL Report Year` == 2019) %>%
+  group_by(Indicator) %>%
+  summarise(avg_index = mean(`WBL_index`, na.rm = TRUE), .groups = "drop")
+
+# Plot in ggplot2
+ggplot(data = indicator_avg_index, mapping = aes(x = Indicator, y = avg_index)) +
+  geom_col() +
+  geom_text(aes(label = sprintf("%.2f", avg_index)), vjust = -0.5, color = "black") +  # Add this line for data labels
+  labs(title = "Average WBL Index by Indicator, 2019", x = "Indicator", y = "WBL Index") +
+  theme_minimal() +
+  ylim(NA, 100) +
+  theme(
+    plot.title.position = "plot",
+    plot.title = element_text(hjust = 0.5),
+    axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1)
+  )
+This code groups the data by the indicator and calculates the average index score for each indicator. The resulting plot will display the average scores for each indicator on the x-axis.
+
