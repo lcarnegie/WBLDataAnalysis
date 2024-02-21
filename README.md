@@ -25,5 +25,5 @@ Reproduction DOI: https://doi.org/10.48152/ssrp-qeab-5493
 ## Notes: 
 
 My folder structure and workflow is based on one created by the legendary Rohan Alexander, available at https://github.com/RohanAlexander/starter_folder
-### LLM Usage Disclosure: Aspects of our R code and paper were written and edited with the assistance of Large Language Models, in particular Claude-2 and GPT-4 (Microsoft Copilot). The chat history with both models are available in inputs/llms
+### LLM Usage Disclosure: Aspects of our R code and paper were written and edited with the assistance of Large Language Models, in particular Claude-2 and GPT-4 (Microsoft Copilot). The chat history with both models are available in inputs/copilot.txt
 
