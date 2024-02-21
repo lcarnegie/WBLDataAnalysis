@@ -28,7 +28,7 @@ wb_data <- read_csv(here::here("outputs/data/wb_data_clean.csv"))
 
 # Introduction
 
-Despite the many decades' worth of progress in gender equality throughout the world, one of the enduring types of gender discrimination worldwide is in the eyes of the Law. Though much progress has been made in western, high-income countries, there remains vast swaths of the world where women may not vote, work, or participate in the same activities as men do, due to the presence of gendered laws. To trace the progression of economic opportunities of women in the world's 190 countries, the World Bank constructed their "Women, Business, and the Law" (WBL) dataset [@world_bank], which Hyland et. al make of primary interest in their paper "Gendered Laws and Women in the Workforce"[@hylandetal]. In Sections 2, we analyze and replicate some of the key graphs and insights from their paper. Building on their work in Sections 4, we call into question the surface level ratings attributed by the World Bank by cross-referencing with the on-ground realities of gender-based discrimination using data from Statistics Canada. The concluding section outlines the importance that accurate data have in being able to fully understand the complex picture of women and the law throughout the world.
+Despite the many decades' worth of progress in gender equality throughout the world, one of the enduring types of gender discrimination worldwide is in the eyes of the Law. Though much progress has been made in western, high-income countries, there remains vast swaths of the world where women may not vote, work, or participate in the same activities as men do, due to the presence of gendered laws. To trace the progression of economic opportunities of women in the world's 190 countries, the World Bank constructed their "Women, Business, and the Law" (WBL) dataset [@world_bank], which Hyland et. al make of primary interest in their paper "Gendered Laws and Women in the Workforce"[@hylandetal]. In Section 2, we analyze and replicate some of the key graphs and insights from their paper. Building on their work in Sections 3, we call into question the surface level ratings attributed by the World Bank by cross-referencing with the on-ground realities of gender-based discrimination using data from Statistics Canada. The estimand we wish to replicate are the individual indicators used by WBL, but in a Canadian context that is backed by empirical research. The concluding section outlines the importance that accurate data have in being able to fully understand the complex picture of women and the law throughout the world.
 
 # Data
 
@@ -77,6 +77,7 @@ region_avg_index <- wb_data |> group_by(Region) |> filter(`WBL Report Year` == 2
 
   ggplot(data = region_avg_index, mapping = aes(x = Region, y = avg_index)) +
   geom_col() +
+  geom_text(aes(label = sprintf("%.2f", avg_index)), vjust = -0.5, color = "black") +  # Add this line for data labels
   labs(title="Average WBL Index by World Region, 2019", x="Region", y="WBL Index") +
   theme_minimal() +
   ylim (NA, 100) +
@@ -96,26 +97,50 @@ region_avg_index <- wb_data |> group_by(Region) |> filter(`WBL Report Year` == 2
 #| fig-cap: Figure 1B from Hyland et al. 
 #| fig-align: center
 
-## Replication of Figure 1A: Avg. WBL Index in 2019
+## Replication of Figure 1B: Indicator variables averages 2019
 
+# isolate indicators 
+average_indicator <- wb_data |> 
+                        rename(
+                          Mobility = GR1_mobility, 
+                          Workplace = GR2_workplace, 
+                          Pay = GR3_pay, 
+                          Marriage = GR4_marriage, 
+                          Parenthood = GR5_parenthood, 
+                          Entrepreneurship = GR6_entrep, 
+                          Assets = GR7_assets, 
+                          Pension = GR8_pension
+                        ) |>
+                        filter(`WBL Report Year` == 2019) |>
+                        select(Mobility, 
+                               Workplace, 
+                               Pay, 
+                               Marriage, 
+                               Parenthood, 
+                               Entrepreneurship, 
+                               Assets, 
+                               Pension
+                               )
 
-# average out the index across regions
-region_avg_index <- wb_data |> group_by(Region) |> filter(`WBL Report Year` == 2019) |>
-                    summarise(avg_index = mean(`WBL_index`, na.rm = TRUE), .groups = "drop")
+#average them out
+avg_values <- colMeans(average_indicator)
 
-
+#put them in a table 
+new_table <- data.frame(Column_Names = names(avg_values), Average_Values = avg_values)
 # Plot in ggplot2
 
-  ggplot(data = region_avg_index, mapping = aes(x = Region, y = avg_index)) +
+  ggplot(data = new_table, mapping = aes(x = Column_Names, y = Average_Values)) +
   geom_col() +
-  labs(title="Average WBL Index by World Region, 2019", x="Region", y="WBL Index") +
+  labs(title="Indicator Averages, 2019", x="Indicator", y="WBL Indicator Score") +
   theme_minimal() +
   ylim (NA, 100) +
   theme(plot.title.position = "plot",
         plot.title = element_text(hjust = 0.5), 
         axis.text.x = element_text (angle = 45, vjust = 1, hjust=1))
+  
 
 ```
+
 
 @fig-secondhyland breaks down aggregate index for 2019 into it's constituent indicators and shows the global average score for each indicator. As Hyland et al pointed out, the 'Parenthood' Indicator was the lowest overall, meaning that globally, women generally enjoy fewer legal rights in employment after they have had children than before.
 
@@ -391,5 +416,6 @@ The closer inspection of Canada in the WBL Database reveals several gaps that co
 Secondly, as is emphasised numerous times in this reproduction, binary questions about whether a law exist or not are just the beginning. They do not imply on ground realities, or legal enforcement. Then, if the question being asked is "Are women paid the same amount as men?", the answer is a resounding no. A useful avenue of research would be to collate from national surveys and frameworks the what the gender-based discrimination situation is in every country.
 
 \newpage
+Replication DOI Link: https://doi.org/10.48152/ssrp-qeab-5493
 
 # References 
