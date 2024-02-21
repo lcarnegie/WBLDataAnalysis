@@ -1,16 +1,17 @@
 ---
 title: "The World Bank, Women, Business and the Law"
-subtitle: "The Need for better checking of Data"
+subtitle: "How Canada's working women fare in the business world"
 author: 
   - Sehar Bajwa
   - Luca Carnegie
 thanks: "Code and data are available at: https://github.com/lcarnegie/replicationpaper. "
 date: February 20, 2024
 date-format: long
-abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
+abstract: "Gender-based legal frameworks and workplace conditions are crucial considerations in the pursuit of global gender equality. This paper replicates and extends the data analysis conducted by Hyland et al. on the World Bank's 'Women, Business, and the Law' dataset.  By cross-referencing the World Bank's indicators with Statistics Canada's data, we delve into the nuanced realities of gender-related legal frameworks and business regulations. The revelations underscore the need for a comprehensive and more practical approach in evaluating gender inclusivity within legal and business domains. "
 format: pdf
 number-sections: true
 bibliography: references.bib
+toc: true
 ---
 
 ```{r workspace-setup}
@@ -27,7 +28,7 @@ wb_data <- read_csv(here::here("outputs/data/wb_data_clean.csv"))
 
 # Introduction
 
-Despite the many decades' worth of progress in gender equality throughout the world, one of the enduring types of gender discrimination worldwide is in the eyes of the law. Though much progress has been made in western, high-income countries, there remains vast swaths of the world where women may not vote, work, or participate in the same activities as men do, due to the presence of gendered laws. To trace the progression of economic opportunities of women in the world's 190 countries, the World Bank constructed their "Women, Business, and the Law" (WBL) dataset, which Hyland et. al make of primary interest in their paper "Gendered Laws and Women in the Workforce". In Sections 2 and 3, we analyze and replicate some of the key graphs and insights from their paper. Building on their work in Sections 4 and 5, we call into question the data collection methods of the World Bank, finding data from Statistics Canada that conflict with the data \[or whatever Sehar finds\], outlining the importance that accurate data have in being able to fully understand the complex picture of women and the law throughout the world.
+Despite the many decades' worth of progress in gender equality throughout the world, one of the enduring types of gender discrimination worldwide is in the eyes of the Law. Though much progress has been made in western, high-income countries, there remains vast swaths of the world where women may not vote, work, or participate in the same activities as men do, due to the presence of gendered laws. To trace the progression of economic opportunities of women in the world's 190 countries, the World Bank constructed their "Women, Business, and the Law" (WBL) dataset [@world_bank], which Hyland et. al make of primary interest in their paper "Gendered Laws and Women in the Workforce"[@hylandetal]. In Sections 2, we analyze and replicate some of the key graphs and insights from their paper. Building on their work in Sections 4, we call into question the surface level ratings attributed by the World Bank by cross-referencing with the on-ground realities of gender-based discrimination using data from Statistics Canada. The concluding section outlines the importance that accurate data have in being able to fully understand the complex picture of women and the law throughout the world.
 
 # Data
 
@@ -52,11 +53,12 @@ The Women, Business, and the Law dataset is organized across thirty-five aspects
 • Assets: covers property ownership rights, inheritance rights (both for children and surviving spouses), authority of assets during marriage, and valuation of non-monetary contributions.\
 • Pension: captures the equalization of retirement ages (with full and partial benefits as well as the mandatory retirement age) and whether periods of absence from employment due to childcare are accounted for in pension benefits.
 
-Indicator-level scores are obtained by calculating the unweighted average of the questions within that indicator and scaling the result to 100. Overall scores are then calculated by taking the average of each indicator, with 100 representing the highest possible score. Each binary question either contributes 20 or 25 points, depending on the indicator. The indicators and index mainly capture the effect labour laws have on the employment outcomes of women in the labour force. It does not take into account laws affecting their acquisition of human capital (e.g. required education laws) nor laws affecting reproductive rights, for instance, which Hyland et al. point to as an issue but concede would be difficult to quantify easily. The World Bank's methodology was designed as an easily replicable measure of the legal environment for women as entrepreneurs and employees, which, for a dataset of it's size and breadth, is comprehensive. In their paper, they then use the dataset to present 'stylized facts' which either unearth new facts about gendered laws or are quantifications of what they write were previously known qualitatively. Figures 1A, 1B, and 2 int the following sections were replicated from the original paper.
+Indicator-level scores are obtained by calculating the unweighted average of the questions within that indicator and scaling the result to 100. Overall scores are then calculated by taking the average of each indicator, with 100 representing the highest possible score. Each binary question either contributes 20 or 25 points, depending on the indicator. The indicators and index mainly capture the effect labour laws have on the employment outcomes of women in the labour force. It does not take into account laws affecting their acquisition of human capital (e.g. required education laws) nor laws affecting reproductive rights, for instance, which Hyland et al. point to as an issue but concede would be difficult to quantify easily. The World Bank's methodology was designed as an easily replicable measure of the legal environment for women as entrepreneurs and employees, which, for a dataset of it's size and breadth, is comprehensive. In their paper, they then use the dataset to present 'stylized facts' which either unearth new facts about gendered laws or are quantifications of what they write were previously known qualitatively. @fig-firsthyland, @fig-secondhyland, and @fig-thirdhyland in the following sections were replicated from the original paper.
 
 ## Key Results 
 
-```{r hyland-fig-1A}
+```{r}
+#| label: fig-firsthyland
 #| message: false
 #| echo: false
 #| warning: false
@@ -84,9 +86,10 @@ region_avg_index <- wb_data |> group_by(Region) |> filter(`WBL Report Year` == 2
 
 ```
 
-Figure 1A shows the average unweighted aggregate WBL index score in 2019, compared across regions. It shows notable differences between higher-income countries and the rest of the world, most notably between higher income countries and countries in the Middle East and North Africa - there is a almost 25 index-point difference between them. In the context of this dataset, it indicates that women in high-income countries enjoy about 36 percent more legal rights related to employment than those in the Middle East and North Africa.
+@fig-firsthyland shows the average unweighted aggregate WBL index score in 2019, compared across regions. It shows notable differences between higher-income countries and the rest of the world, most notably between higher income countries and countries in the Middle East and North Africa - there is a almost 25 index-point difference between them. In the context of this dataset, it indicates that women in high-income countries enjoy about 36 percent more legal rights related to employment than those in the Middle East and North Africa.
 
-```{r hyland-fig-1B}
+```{r}
+#| label: fig-secondhyland
 #| message: false
 #| echo: false
 #| warning: false
@@ -114,9 +117,10 @@ region_avg_index <- wb_data |> group_by(Region) |> filter(`WBL Report Year` == 2
 
 ```
 
-Figure 1B breaks down aggregate index for 2019 into it's constituent indicators and shows the global average score for each indicator. As Hyland et al pointed out, the 'Parenthood' Indicator was the lowest overall, meaning that globally, women generally enjoy fewer legal rights in employment after they have had children than before.
+@fig-secondhyland breaks down aggregate index for 2019 into it's constituent indicators and shows the global average score for each indicator. As Hyland et al pointed out, the 'Parenthood' Indicator was the lowest overall, meaning that globally, women generally enjoy fewer legal rights in employment after they have had children than before.
 
-```{r hyland-fig-2}
+```{r}
+#| label: fig-thirdhyland
 #| message: false
 #| echo: false
 #| warning: false
@@ -148,7 +152,7 @@ regional_avgs_byyear |>
 
 ```
 
-Figure 2 shows the progression of the aggregate WBL index over time, broken down by region. As expected, high-income countries dominate in index score, but interestingly Latin American women enjoyed more rights than even European/Central Asian women between 1995-2000. Employment rights for women in Sub-Saharan Africa have also seen the most growth since tracking began in 1971.
+@fig-thirdhyland shows the progression of the aggregate WBL index over time, broken down by region. As expected, high-income countries dominate in index score, but interestingly Latin American women enjoyed more rights than even European/Central Asian women between 1995-2000. Employment rights for women in Sub-Saharan Africa have also seen the most growth since tracking began in 1971.
 
 
 # A focus on Canada
@@ -159,14 +163,14 @@ By synthesizing the insights derived from the WBL indicators with the robust sta
 
 ## Canada in the WBL
 
-OECD Countries fare particularly well in the WBL Rankings, as evidenced in the graphs in the former sections, with the highest average WBL Indexes and Index Progressions. As a High Income OECD Country, Canada fares particularly well in the WBL Database, scoring 100 across all 8 indicators over the past decade. Cross-referencing the updated database with the one used in the paper reveals the same scores till 2023 as well, revealing that not much has changed post the COVID 19 Pandemic.
+OECD Countries fare particularly well in the WBL Rankings, as evidenced in the graphs in the former sections, with the highest average WBL Indexes and Index Progressions. As a High Income OECD Country, Canada fares particularly well in the WBL Database [@world_bank], scoring 100 across all 8 indicators over the past decade. Cross-referencing the updated database with the one used in the paper reveals the same scores till 2023 as well, revealing that not much has changed post the COVID 19 Pandemic.
 
 Every indicator within the study is supported by a 'legal basis' as outlined in the original WBL Database, providing a foundation to substantiate the assigned marks for each question. It is essential to note that in the datasheet utilized by Hyland et al, the legal columns were omitted. However, for the purpose of our subsequent analysis, we deem it imperative to reference the official database's legal columns. This is crucial as they not only serve to validate our findings but also contribute valuable insights that may be overlooked when solely relying on the abbreviated dataset used by Hyland et al.
 
 ### Pay
 
        
-The first indicator to be scrutinized is Pay, particularly the question that focuses on equal remuneration regardless of gender. Notably, the legal backing for an indicator representative of Canada is one that references only one province, Ontario. Nevertheless, this section will utilize the LFS Survey from Statistics Canada to evaluate if Canada’s perfect rating doesn’t hold up solely on paper.  
+The first indicator to be scrutinized is Pay, particularly the question that focuses on equal remuneration regardless of gender. Notably, the legal backing for an indicator representative of Canada is one that references only one province, Ontario. Nevertheless, this section will utilize the LFS Survey from Statistics Canada[@wagegap_canada] to evaluate if Canada’s perfect rating doesn’t hold up solely on paper.  
 ```{r canada-tbl-1}
 #| message: false
 #| echo: false
@@ -200,17 +204,16 @@ colnames(pay) <- gsub("_", " ", colnames(pay))
 ```
        
 
-The LFS survey reveals that in 2018, female employees aged 25 to 34 earned 4.13 dollars less per hour compared to their male counterparts, equaling 87 cents on the dollar. In the decade between 1988 and 2018, the gap has reduced by merely \$1.04. Given that women in Canada are now better educated on average than men, acquiring bachelor’s degrees at a faster pace, and have diversified their fields of study, particularly in STEM, the persistence of this gap warrants a closer look.
+The LFS survey reveals that in 2018, female employees aged 25 to 34 earned 4.13 dollars less per hour compared to their male counterparts, equaling 87 cents on the dollar. In the decade between 1988 and 2018, the gap has reduced by merely $1.04. Given that women in Canada are now better educated on average than men, acquiring bachelor’s degrees at a faster pace, and have diversified their fields of study, particularly in STEM, the persistence of this gap warrants a closer look.
 
-     
-The authors used a Blinder Oaxaca Decomposition to quantify how much of the wage difference can be explained by control factors. Some of these factors included level of education, job tenure, union coverage, and demographics. The results show that even after controlling for the above factors, roughly two-thirds of the wage gap is unexplained, and the difference is statistically significant at a 95% confidence interval.
-
+The authors used a Blinder Oaxaca Decomposition to quantify how much of the wage difference can be explained by control factors. Some of these factors included level of education, job tenure, union coverage, and demographics. The results in @tbl-explanation show that even after controlling for the above factors, roughly two-thirds of the wage gap is unexplained, and the difference is statistically significant at a 95% confidence interval.
      
 The table below reproduces the gender wage gap- Oaxaca decomposition data from the Labour Statistics report. As is visible, only an additional 7% of this gap has become explicable in the years that have followed since 1988, largely due to unionization reducing men's wages, and women entering new industries. Despite extensive research, the gender wage gap remains an unsolved mystery in Canada.
 
         
-```{r canada-tbl-2}
+```{r}
 #| message: false
+#| label: tbl-explanation
 #| echo: false
 #| warning: false
 #| fig-align: center
@@ -275,7 +278,7 @@ colnames(workplace) <- gsub("_", " ", colnames(workplace))
   column_spec(2, width = "29em")
 ```
 
-Utilizing data from Statistics Canada's Centre for Gender, Diversity, and Inclusion Statistics, in collaboration with the Canadian Centre for Justice and Community Safety Statistics, we analyze a recently released data table on workplace harassment and sexual assault experiences. The table reports on the Gender Results Framework (GRF), initiated by the Government of Canada in 2018 to monitor gender equality progress. Additionally, the data incorporates insights gathered from the 2020 Survey on Sexual Misconduct at Work (SSMW).
+Utilizing data from Statistics Canada's Centre for Gender, Diversity, and Inclusion Statistics, in collaboration with the Canadian Centre for Justice and Community Safety Statistics [@harassment_canada], we analyze a recently released data table on workplace harassment and sexual assault experiences. The table reports on the Gender Results Framework (GRF), initiated by the Government of Canada in 2018 to monitor gender equality progress. Additionally, the data incorporates insights gathered from the 2020 Survey on Sexual Misconduct at Work (SSMW)[@SSMW].
 
 The reproduced table from the 2020 Survey on Sexual Misconduct at Work outlines the proportions of employees reporting inappropriate sexualized behavior, discriminatory behavior, and sexual assault in their work environments. Notably, the data highlights the heightened vulnerability of individuals in the 25 to 34 age group, where 57% of females report experiencing sexualized behaviors. Within this age group, women are twice as likely as men to face discrimination and three times as likely to experience sexual assault.
 
@@ -357,7 +360,7 @@ colnames(maternal) <- gsub("_", " ", colnames(maternal))
   column_spec(2, width = "29em")
 ```
 
-This last indicator examines the challenges faced by new mothers returning to the workplace. Canada has legal provisions to ensure that maternal leave comes with benefits, and national statistics indicate that a substantial majority, 85.4% of new mothers with insurable employment, received maternity or parental benefits in 2018 according to the Employment Insurance Coverage Survey. However, it is crucial to consider the practical implementation of these laws, as their existence doesn't guarantee enforcement. A survey conducted among 1090 mothers who took maternity leave between 2011 and 2021 reveals that one in three women encountered discrimination upon their return to the workplace. This discrimination manifested in various forms, including the following:\
+This last indicator examines the challenges faced by new mothers returning to the workplace. Canada has legal provisions to ensure that maternal leave comes with benefits, and national statistics indicate that a substantial majority, 85.4% of new mothers with insurable employment, received maternity or parental benefits in 2018 according to the Employment Insurance Coverage Survey [@insurance]. However, it is crucial to consider the practical implementation of these laws, as their existence doesn't guarantee enforcement. A survey conducted among 1090 mothers who took maternity leave between 2011 and 2021 reveals that one in three women encountered discrimination upon their return to the workplace [@moms]. This discrimination manifested in various forms, including the following:\
 • Poor treatment and derogatory comments\
 • Denied opportunities to develop professionally (projects, training, responsibility)\
 • Laid off, restructured or demoted\
@@ -370,23 +373,23 @@ Furthermore, a striking 95% of the surveyed women did not receive any formal sup
 
 ## Concluding remarks
 
-In conclusion, the Canadian lens applied to the WBL Database provide a 
-
+In conclusion, the Canadian lens applied to the WBL Database provides a nuanced perspective on the state of gender-related legal frameworks and business regulations. While the World Bank's Women, Business, and the Law (WBL) index assigns Canada a perfect score across all eight indicators, our analysis using Statistics Canada data reveals a more complex reality. 
 
 ## Rigged data and the World Bank
 
+An inquiry into the manipulation of an annual World Bank report revealed in 2021 that Kristalina Georgieva, the former Chief Executive of the bank and current head of the International Monetary Fund, instructed staff to modify data to appease China. The investigation, conducted by the law firm WilmerHale at the request of the bank’s ethics committee,  raised concerns about Georgieva's judgment during her tenure at the World Bank.
+
+In light of these revelations, Luiz Vieira, coordinator of the London-based Bretton Woods Project, a nonprofit watchdog group said:
+"It highlights the degree to which the World Bank and the IMF can really be trusted to provide advice based on solid research. It raises questions about whose interests are being served, how robust is their analysis, and how subject to geopolitical and shareholder pressure are they?"
+
+This brings into question the validity of data, even that which is considered unimpeachable and global. One incident of rigged data brought to light underscores the possibility of others. 
 
 ## Future research
 
+The closer inspection of Canada in the WBL Database reveals several gaps that could influence future research. Principal amongst them is establishing the basis on which legal frameworks are selected to score the countries: as is evidenced above, sometimes codes applying to Ontario are applied, and wherever convenient, National Laws are applied.
+
+Secondly, as is emphasised numerous times in this reproduction, binary questions about whether a law exist or not are just the beginning. They do not imply on ground realities, or legal enforcement. Then, if the question being asked is "Are women paid the same amount as men?", the answer is a resounding no. A useful avenue of research would be to collate from national surveys and frameworks the what the gender-based discrimination situation is in every country.
 
 \newpage
 
-# References
-
-::: {#refs}
-
-\newpage
-
-\appendix
-
-# Appendix {.unnumbered}
+# References 
