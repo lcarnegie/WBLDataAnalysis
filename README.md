@@ -1,8 +1,7 @@
 # Women, Business, and the Law: A Case for Better Data Collection
-
 ## Overview of Paper
 
-[Whatever it will be testing for connections]
+This repo includes all files needed to reproduce the paper "Gendered Laws and Women in the Workforce" published in the American Economics Review: Insights. It reproduces the graphs from the aforementioned paper using data from the World Bank's Women, Business and the Law Database. Additionally, it applies a Canadian-facing lens by cross-referencing the data with statistics available from Statistics Canada. While the World Bank's WBL index provides a valuable snapshot of legal frameworks, our analysis emphasizes the importance of complementing such indices with empirical data to gain a more holistic understanding. We hope to inspire future research that could explore the intersections of legal provisions, their implementation, and their impact on the lived experiences of individuals, especially concerning gender equality in the workplace.
 
 ## File Structure
 
@@ -17,7 +16,7 @@ The repository is structured as follows:
 
 Here is a quick guide to reproducing my graphs and tables.
 1. Clone this repository to your computer
-2. Download the data from [] using [R file that does it]
+2. Download the data from replication package
 3. Clean it using [the file that cleans it]
 4. Open [path] to test the R code that generated my plots
 
