@@ -1,7 +1,8 @@
 # Women, Business, and the Law: A Case for Better Data Collection
+
 ## Overview of Paper
 
-This repo includes all files needed to reproduce the paper "Gendered Laws and Women in the Workforce" published in the American Economics Review: Insights. It reproduces the graphs from the aforementioned paper using data from the World Bank's Women, Business and the Law Database. Additionally, it applies a Canadian-facing lens by cross-referencing the data with statistics available from Statistics Canada. While the World Bank's WBL index provides a valuable snapshot of legal frameworks, our analysis emphasizes the importance of complementing such indices with empirical data to gain a more holistic understanding. We hope to inspire future research that could explore the intersections of legal provisions, their implementation, and their impact on the lived experiences of individuals, especially concerning gender equality in the workplace.
+This self-directed research repo reproduces and builds on Hyland, Djankov, and Goldberg's paper "Gendered Laws and Women in the Workforce" published in the 2020 American Economic Review. 
 
 ## File Structure
 
@@ -20,10 +21,11 @@ Here is a quick guide to reproducing the graphs and tables.
 3. Clean it using data cleaning file in scripts
 4. Open the paper.qmd file in outputs to test the R code that generated the plots
 
-Reproduction DOI: https://doi.org/10.48152/ssrp-qeab-5493
+Check out our DOI on the Social Science Reproduction Platform: https://doi.org/10.48152/ssrp-qeab-5493
 
 ## Notes: 
 
-My folder structure and workflow is based on one created by the legendary Rohan Alexander, available at https://github.com/RohanAlexander/starter_folder
-### LLM Usage Disclosure: Aspects of our R code and paper were written and edited with the assistance of Large Language Models, in particular Claude-2 and GPT-4 (Microsoft Copilot). The chat history with both models are available in inputs/copilot.txt
+Our folder structure and workflow is based on a similar one created by Rohan Alexander, available at https://github.com/RohanAlexander/starter_folder
+
+### LLM Usage Disclosure: Aspects of our R code and paper were written and edited with the assistance of Large Language Models, in particular Claude-2 and GPT-4 (Microsoft Copilot). The chat history with both models are each available in inputs/copilot.txt
 
