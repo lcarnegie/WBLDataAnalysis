@@ -1,5 +1,5 @@
 #### Preamble ####
-# Purpose: Cleans data for replication analysis (translated from Stata)
+# Purpose: Cleans data for replication (translated from Stata written by Hyland et al.)
 # Author:  Marie Hyland, Simeon Djankov, and Pinelopi Koujianou Goldberg* (translated from the Stata by Luca Carnegie)
 # Date: 12 February 2023
 # Contact: luca.carnegie@mail.utoronto.ca
