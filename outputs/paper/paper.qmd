@@ -7,7 +7,7 @@ author:
 thanks: "Code and data are available at: https://github.com/lcarnegie/replicationpaper. "
 date: February 20, 2024
 date-format: long
-abstract: "Gender-based legal frameworks and workplace conditions are crucial considerations in the pursuit of global gender equality. This paper replicates and extends the data analysis conducted by Hyland et al. on the World Bank's 'Women, Business, and the Law' dataset.  By cross-referencing the World Bank's indicators with Statistics Canada's data, we delve into the nuanced realities of gender-related legal frameworks and business regulations. The revelations underscore the need for a comprehensive and more practical approach in evaluating gender inclusivity within legal and business domains. "
+abstract: "Understanding gender-based differences in legal frameworks and workplace conditions is important in the pursuit of global gender equality. This paper replicates and extends Hyland, ASDFA, ASDFASF (). We examine gender-related legal frameworks and business regulations globally, and then compare the World Bank's indicators with those of Statistics Canada to focus on Canada. We find that nuances in country-level datasets are important for understanding the biases faced by women in different countries, which underscores the difficulty of constructing cross-country datasets."
 format: pdf
 number-sections: true
 bibliography: references.bib
